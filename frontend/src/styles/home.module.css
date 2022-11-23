@@ -1,0 +1,12 @@
+.best{
+    height: 32rem;
+    width: 100%;
+    border: 1px solid red;
+    margin-top: 5rem;
+    background-image: url(https://media.sugarcosmetics.com/upload/homePageBackGroundTexture.jpg);
+}
+.bestsell{
+    color: white;
+    font-size: 25px;
+  margin-top: 2rem;
+}
