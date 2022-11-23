@@ -23,7 +23,7 @@ const LogSign = () => {
         <form>
   <fieldset>
     <legend>Choose your favorite monster</legend>
-
+      <Input  />
   </fieldset>
 </form>
       </Box>
