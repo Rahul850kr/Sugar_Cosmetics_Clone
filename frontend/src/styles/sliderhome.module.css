@@ -1,0 +1,7 @@
+.bestseller{
+    height: 22rem;
+    width: 12rem;
+    border: 1px solid red;
+    background-color: white;
+    border-radius: 15px;
+}

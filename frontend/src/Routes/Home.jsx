@@ -18,6 +18,8 @@ const Home = () => {
 <Box className={styles.best}>
 
  <Text className={styles.bestsell}>BESTSELLERS</Text>
+
+ <Box className={styles.sli}></Box>
 </Box>
 
 

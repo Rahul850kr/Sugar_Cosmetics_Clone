@@ -1,5 +1,5 @@
 .best{
-    height: 32rem;
+    height: 35rem;
     width: 100%;
     border: 1px solid red;
     margin-top: 5rem;
@@ -9,4 +9,14 @@
     color: white;
     font-size: 25px;
   margin-top: 2rem;
+  font-weight: bold;
+}
+.sli{
+    height: 25rem;
+    width: 80%;
+    border: 1px solid red;
+    margin: auto;
+    margin-top: 1rem;
+    display: flex;
+    gap: 1rem;
 }
