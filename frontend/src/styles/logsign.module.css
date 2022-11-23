@@ -50,8 +50,86 @@
 }
 
 fieldset{
-    border: 1px solid red;
+    border: 2px solid rgba(0,0,0,0.1);
+    border-radius: 3px;
+    height: 4.5rem;
+   
 }
+
+.input{
+    margin-left: 1rem;
+}
+
+.fieldBox{
+    width: 50%;
+    margin: auto;
+    margin-top: 2rem;
+}
+
+.textBox{
+    width: 80%;
+    margin: auto;
+    font-size: 0.9rem;
+    line-height: 1.2;
+    color: gray;
+    margin-top: 2rem;
+}
+
+.button{
+    background-color: black;
+    color: white;
+}
+
+.checkDiv{
+    display: flex;
+    margin: auto;
+    /* border: 2px solid red; */
+    justify-content: center;
+    align-items: center;
+    padding: 0.6rem 0;
+    font-size: 0.8rem;
+    gap: 1rem;
+    border-top: 1px dashed rgba(0,0,0,0.3);
+    margin-top: 1rem;
+}
+
+span{
+    color: #fc2779;
+    cursor: pointer;
+}
+
+.need{
+    display: flex;
+    margin: auto;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 0.6rem 0;
+    margin-top: 1rem;
+    border-bottom: 1px dashed rgba(0,0,0,0.3);
+}
+
+.sign{
+    display: flex;
+    margin: auto;
+   
+    justify-content: center;
+    align-items: center;
+    padding: 0.6rem 0;
+    font-size: 0.8rem;
+    gap: 1rem;
+    margin-top: 0.5rem;
+}
+
+.copyright{
+    background-color: black;
+    color: white;
+}
+
+
+
+
+
+
 
 
 
