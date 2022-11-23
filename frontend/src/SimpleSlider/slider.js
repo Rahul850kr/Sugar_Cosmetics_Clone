@@ -40,9 +40,9 @@ export const SimpleSlider=()=>{
 
 
       return(
-        <Slider {...settings} easing="ease">
+        <Slider {...settings} >
         {data.map((el)=>
-        <Box>
+        <Box bgColor={"black"}>
             <Image src={el.images}/>
         </Box>
         )}
