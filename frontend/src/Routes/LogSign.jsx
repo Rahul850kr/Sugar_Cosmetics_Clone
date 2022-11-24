@@ -8,8 +8,8 @@ import {
 import React, { useState } from "react";
 import styles from "../styles/logsign.module.css";
 import { Link, useNavigate } from "react-router-dom";
-import Inputformobile from "../Components/Inputformobile";
-import Otpform from "../Components/Otpform"
+import Inputformobile from "../components/Inputformobile";
+import Otpform from "../components/Otpform"
 
 const LogSign = () => {
   const [val,setVal] = useState(true);
