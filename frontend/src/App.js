@@ -9,11 +9,9 @@ import { SimpleSlider } from './SimpleSlider/slider';
 function App() {
   return (
     <div className="App">
-    {/* <Navbar/> */}
-
-    {/* <SimpleSlider/> */}
-    <Home/>
-    {/* <HomeSlider/> */}
+   
+    <AllRoutes/>
+ 
     </div>
   );
 }
