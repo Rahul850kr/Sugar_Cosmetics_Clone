@@ -6,7 +6,7 @@ const Otpform = ({classname,setVal,handleChange}) => {
     const [text,setText] = useState("");
    
   return (
-    <fieldset>
+    <fieldset style={{width:"50%",margin:"auto"}} >
     <legend>Enter OTP</legend>
     <InputGroup>
       <Input onChange={(e)=>{
