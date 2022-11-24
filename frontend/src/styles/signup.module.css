@@ -33,5 +33,83 @@
 
 .formHead{
     font-weight: 700;
+}
+
+.formBox{
+    width: 40%;
+    margin: auto;
+}
+
+.formBox>fieldset{
+    border: 1px solid black;
+    padding: 0.5rem;
+}
+
+.formBox span{
+    color: red;
+}
+
+legend{
+    text-align: left;
+    margin-left: 0.5rem;
+}
+
+.or{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    align-items: center;
+    /* border: 1px solid red; */
+    width: 30%;
+    margin: auto;
+    margin-top: 1rem;
 
 }
+
+.or::before, .or::after{
+    content: "";
+    height: 1px;
+    display: block;
+    background-color: gray;
+}
+
+.googleBox{
+    width: 25%;
+    margin: auto;
+    display: flex;
+    /* border: 1px solid red; */
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+    background-color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.googleImage{
+    width: 2rem;
+}
+
+.need{
+    display: flex;
+    margin: auto;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 0.6rem 0;
+    margin-top: 1rem;
+    border-bottom: 1px dashed rgba(0,0,0,0.3);
+}
+
+.sign{
+    display: flex;
+    margin: auto;
+   
+    justify-content: center;
+    align-items: center;
+    padding: 0.6rem 0;
+    font-size: 0.8rem;
+    gap: 1rem;
+    margin-top: 0.5rem;
+}
+
+
+
