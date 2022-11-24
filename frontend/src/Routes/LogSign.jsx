@@ -31,7 +31,7 @@ const LogSign = () => {
   }
 
   const handleSubmitOtp = ()=>{
-// console.log("done")
+console.log(num)
   }
 
   return (

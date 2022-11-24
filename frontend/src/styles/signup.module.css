@@ -1,0 +1,37 @@
+.mainDiv{
+    display: flex;
+    height: 100vh;
+}
+
+.left{
+    width: 40%;
+    height: 100%;
+    background-image: url("https://media.sugarcosmetics.com/upload/authSIe2.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.right{
+    width: 60%;
+    height: 100%;
+    background-image: url("https://media.sugarcosmetics.com/upload/loginPageBackGroundTexture.png");
+    background-repeat: no-repeat;
+    /* background-size: cover; */
+    padding: 3rem 2rem;
+}
+
+#backArrow{
+    font-size: 1.5rem;
+    /* width: 3rem; */
+}
+
+.backArrowDiv{
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: left;
+}
+
+.formHead{
+    font-weight: 700;
+
+}
