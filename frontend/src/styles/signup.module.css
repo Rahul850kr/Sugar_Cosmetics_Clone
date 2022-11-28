@@ -111,5 +111,12 @@ legend{
     margin-top: 0.5rem;
 }
 
+.field{
+    /* border: 1px solid red; */
+    /* border-color: red;
+    border-style: solid; */
+    border:#f00 1px solid;
+}
+
 
 
