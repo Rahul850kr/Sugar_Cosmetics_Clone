@@ -17,7 +17,7 @@ const Signup = () => {
           <Text className={styles.formHead}>Please fill this form below</Text>
         </Box>
         <form className={styles.formBox}>
-          <fieldset>
+          <fieldset style={{border: "2px solid rgba(0,0,0,0.2)"}}>
             <legend>
               First Name<span>*</span>
             </legend>
@@ -28,7 +28,7 @@ const Signup = () => {
               required
             />
           </fieldset>
-          <fieldset>
+          <fieldset style={{border: "2px solid rgba(0,0,0,0.2)"}}>
             <legend>
               Last Name<span>*</span>
             </legend>
@@ -39,7 +39,7 @@ const Signup = () => {
               required
             />
           </fieldset>
-          <fieldset>
+          <fieldset style={{border: "2px solid rgba(0,0,0,0.2)"}}>
             <legend>
               Enter Email Id<span>*</span>
             </legend>
@@ -50,7 +50,7 @@ const Signup = () => {
               required
             />
           </fieldset>
-          <fieldset>
+          <fieldset style={{border: "2px solid rgba(0,0,0,0.2)"}} className={styles.field}>
             <legend>
               Enter Password<span>*</span>
             </legend>
