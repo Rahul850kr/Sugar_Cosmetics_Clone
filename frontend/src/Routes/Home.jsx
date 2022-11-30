@@ -93,6 +93,12 @@ const Home = () => {
 
 
 
+<Text>RECENTLY VIEWED</Text>
+<Box className={styles.gifting}>
+  <Gifting/>
+</Box>
+
+<Text>NEWLY LAUNCHED</Text>
 <Box>
   <Newly/>
 </Box>
