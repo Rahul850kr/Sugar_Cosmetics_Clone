@@ -4,22 +4,22 @@ import Slider from "react-slick";
 
 const data=[
     {
-        images:"https://d32baadbbpueqt.cloudfront.net/Homepage/06721d4d-e610-4007-8d4d-d2fe63019695.jpg"
+        images:"https://d32baadbbpueqt.cloudfront.net/Homepage/37471559-27d1-4509-9e31-29d889be7036.jpg"
     },
     {
-        images:"https://d32baadbbpueqt.cloudfront.net/Homepage/b69d2fc2-53f5-45ed-8e89-8dcd108ed2b6.jpg"
+        images:"https://d32baadbbpueqt.cloudfront.net/Homepage/f190c764-84cf-4eea-a381-8b701be65852.gif"
     },
     {
-        images:"https://d32baadbbpueqt.cloudfront.net/Homepage/61085ebd-495f-470b-a54c-02c2569df51b.jpg"
+        images:"https://d32baadbbpueqt.cloudfront.net/Homepage/6985f902-c3fe-4a20-bc76-1658a9109fd1.jpg"
     },
     {
-        images:"https://d32baadbbpueqt.cloudfront.net/Homepage/1fb4eae2-6719-4f1f-b80e-efda1cf48362.jpg"
+        images:"https://d32baadbbpueqt.cloudfront.net/Homepage/562fe539-20b1-4239-903e-9a27747b8bf0.gif"
     },
     {
-        images:"https://d32baadbbpueqt.cloudfront.net/Homepage/f9d36dac-9508-4dfb-b9b8-a417b308406d.jpg"
+        images:"https://d32baadbbpueqt.cloudfront.net/Homepage/9e2d8597-51d5-41be-95b0-aac4cc0e9794.gif"
     },
     {
-        images:"https://d32baadbbpueqt.cloudfront.net/Homepage/a41d5b02-1299-4e1a-b4e1-ba19484796b5.gif"
+        images:"https://d32baadbbpueqt.cloudfront.net/Homepage/730cf92b-3d4a-4d08-bed8-db88e7911f32.jpg"
     }
     
 
@@ -42,8 +42,8 @@ export const Newly=()=>{
       return(
         <Slider {...settings} >
         {data.map((el)=>
-        <Box>
-            <Image src={el.images}/>
+        <Box borderRadius={"15px"} w={"90%"}>
+            <Image src={el.images} w={"90%"} borderRadius={"15px"} m={"auto"}/>
         </Box>
         )}
          
