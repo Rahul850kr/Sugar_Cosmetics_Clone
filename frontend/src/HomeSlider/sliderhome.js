@@ -1,6 +1,6 @@
-import { Box, Img, Text } from "@chakra-ui/react";
+import { Box, Button, Img, Text } from "@chakra-ui/react";
 import {Slide} from "react-slideshow-image"
-
+import "react-slideshow-image/dist/styles.css"
 import styles from "../styles/sliderhome.module.css"
 
 
@@ -94,8 +94,8 @@ export const HomeSlider=()=>{
         dots: true,
         infinite: true,
         speed: 500,
-        slidesToShow: 1,
-        slidesToScroll: 1
+        slidesToShow: 4,
+        slidesToScroll: 4
       };
 
 
@@ -104,11 +104,22 @@ export const HomeSlider=()=>{
 
          {data.map((el)=>
          <Box className={styles.bestseller}>
-         <Img src={el.images}>
-
+            <Box className={styles.bestsellerimgbox}>
+         <Img className={styles.bestsellerimg} src={el.images}>
          </Img>
+         </Box>
+
+         
          <Text >{el.title}</Text>
          <Text>{el.price}</Text>
+         <Box className={styles.iconbox}>
+
+             <Box className={styles.icon}>
+             <i class="fa-regular fa-heart"></i>
+             </Box>
+
+         <Button className={styles.iconbtn}>ADD TO CART</Button>
+         </Box>
          </Box>
          )}
          

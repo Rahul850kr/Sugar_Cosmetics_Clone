@@ -3,7 +3,7 @@
     width: 100%;
     border: 1px solid red;
     margin-top: 5rem;
-    background-image: url(https://media.sugarcosmetics.com/upload/homePageBackGroundTexture.jpg);
+    background-image: url('https://media.sugarcosmetics.com/upload/homePageBackGroundTexture.jpg');
 }
 .bestsell{
     color: white;
@@ -12,11 +12,77 @@
   font-weight: bold;
 }
 .sli{
+    height: 27rem;
+    width: 90%;
+    /* border: 1px solid red; */
+    margin: auto;
+    margin-top: 1rem;
+    /* gap: 1rem; */
+    
+}
+
+.hot{
+    height: 20rem;
+    width: 95%;
+    /* border: 1px solid red; */
+    margin: auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.hotdeals{
+    height: 17rem;
+    width: 32%;
+    /* border: 1px solid red; */
+    border-radius: 15px;
+}
+.hotdealsimg{
+    height: 100%;
+    width: 100%;
+    border-radius: 15px;
+}
+
+.sug{
     height: 25rem;
     width: 80%;
+    /* border: 1px solid red; */
+    margin: auto;
+    border-radius: 15px;
+    
+}
+.sugimg{
+    height: 100%;
+    width: 100%;
+    border-radius: 15px;
+}
+.ref{
+
+
+    height: 20rem;
+    width: 90%;
+    /* border: 1px solid red; */
+    margin: auto;
+    border-radius: 15px;
+}
+
+.refimg{
+    height: 100%;
+    width: 100%;
+    border-radius: 15px;
+}
+.slid{
+    height: 28rem;
+    width: 90%;
     border: 1px solid red;
     margin: auto;
     margin-top: 1rem;
-    display: flex;
-    gap: 1rem;
+    /* gap: 1rem; */
+    
+}
+.gift{
+    height: 28rem;
+    width: 90%;
+    border: 1px solid red;
+    margin: auto;
+    margin-top: 1rem;
 }
