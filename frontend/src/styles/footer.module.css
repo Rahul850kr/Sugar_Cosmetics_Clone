@@ -55,3 +55,16 @@ padding: 5px;
     height: 1.5rem;
     width: 1.5rem;
 } */
+
+
+.store{
+    height: 3rem;
+    width: 70%;
+    /* border: 1px solid red; */
+    margin: auto;
+    display: flex;
+    justify-content: space-around;
+    color: white;
+    font-size: 20px;
+    
+}
