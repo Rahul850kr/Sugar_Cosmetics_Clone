@@ -2,14 +2,17 @@ import { Box, Button, Img, Text } from '@chakra-ui/react';
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
 import React from 'react';
-import Slider from "react-slick";
+
 import Navbar from '../components/Navbar';
-import { SimpleSlider } from '../SimpleSlider/slider';
+
 import styles from "../styles/home.module.css"
-import { HomeSlider } from '../HomeSlider/sliderhome';
-import { JustSlider } from '../components/JustSlider/just';
-import { Gifting } from '../components/Gifting/gifting';
-import { Newly } from '../components/Newly/newly';
+
+
+import { Gifting } from '../components/Gifting';
+import { Newly } from '../components/Newly';
+import { Just } from '../components/Just';
+import { HomeSlider } from '../components/HomeSlider';
+import { SimpleSlider } from '../components/SimpleSlider';
 
 const Home = () => {
 
@@ -46,7 +49,7 @@ const Home = () => {
 
 <Text>JUST IN</Text>
 <Box className={styles.slid} >
-<JustSlider/>
+<Just/>
 </Box>
 
 
@@ -102,6 +105,10 @@ const Home = () => {
 <Box>
   <Newly/>
 </Box>
+
+<Box className={styles.sli}>
+     <HomeSlider/>
+ </Box>
     </>
   )
 }

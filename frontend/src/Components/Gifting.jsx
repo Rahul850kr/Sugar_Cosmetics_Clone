@@ -2,7 +2,7 @@ import { Box, Button, Img, Text } from "@chakra-ui/react";
 import {Slide} from "react-slideshow-image"
 import "react-slideshow-image/dist/styles.css"
 
-import styles from "../../styles/just.module.css"
+import styles from "../styles/gifting.module.css"
 
 const data=[
     {
@@ -63,7 +63,7 @@ const data=[
 
 ]
 
-export const JustSlider=()=>{
+export const Gifting=()=>{
     const settings = {
         dots: true,
         infinite: true,
