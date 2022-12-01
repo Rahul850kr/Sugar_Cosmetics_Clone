@@ -46,9 +46,16 @@ const Footer = () => {
                 <i class="fa-brands fa-pinterest-p"></i>
             </Box>
 
-
+        
+        
          </Box>
-
+         <Box className={styles.store}>
+                <Text>Stores</Text>
+                <Text>Terms & Conditions</Text>
+                <Text>Returns</Text>
+                <Text>FAQs</Text>
+                <Text>About Us</Text>
+         </Box>
         
     </Box>
     </>
