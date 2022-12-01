@@ -13,6 +13,7 @@ import { Newly } from '../components/Newly';
 import { Just } from '../components/Just';
 import { HomeSlider } from '../components/HomeSlider';
 import { SimpleSlider } from '../components/SimpleSlider';
+import Footer from '../components/Footer';
 
 const Home = () => {
 
@@ -109,6 +110,8 @@ const Home = () => {
 <Box className={styles.sli}>
      <HomeSlider/>
  </Box>
+
+ <Footer/>
     </>
   )
 }
