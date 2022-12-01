@@ -1,0 +1,57 @@
+.container{
+    height: 22rem;
+    width: 100%;
+    border: 1px solid red;
+ 
+    background-image: url("https://sugarcosmetics.com/desc-images/Rectangle_background.svg");
+}
+.inp{
+    width: 55%;
+    margin: auto;
+    display: flex;
+    background-color: white;
+
+}
+.inpbtn{
+    color: white;
+    background-color: black;
+}
+
+.sugarbox{
+    height: 35rem;
+    width: 100%;
+    border: 1px solid red;
+    background-color: black;
+}
+/* .slog{
+    height: 2rem;
+    width: 2rem;
+    border: 1px solid red;
+    border-radius: 50%;
+    background-image: url("https://sugarcosmetics.com/Footer_sugar_icon.svg");
+    position: relative;
+} */
+.logos{
+  
+
+    height: 3rem;
+    width: 20rem;
+    /* border: 1px solid red; */
+    margin: auto;
+    display: flex;
+    justify-content: space-around;
+}
+
+.icon{
+height: 2rem;
+width: 2rem;
+/* border: 1px solid red; */
+border-radius: 50%;
+background-color: #c4c4c4;
+padding: 5px;
+
+}
+/* .iconi{
+    height: 1.5rem;
+    width: 1.5rem;
+} */
