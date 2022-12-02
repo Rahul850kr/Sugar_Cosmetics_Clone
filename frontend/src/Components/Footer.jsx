@@ -79,6 +79,23 @@ const Footer = () => {
            
           </Box>
 
+
+          <Box className={styles.get}>
+            <Box>
+              <Text className={styles.the}>GET THE NEW SUGAR APP TODAY!</Text>
+              <Text className={styles.tap} >Tap into a better shopping experience</Text>
+            </Box>
+            <Box>
+              <Img className={styles.getimg} src="https://sugarcosmetics.com/playstore.png"/>
+            </Box>
+            <Box>
+              <Img className={styles.getimg}  src="https://sugarcosmetics.com/apple-store.png"/>
+            </Box>
+          </Box>
+
+
+
+         <Text className={styles.copy}>Copyright © 2022 SUGAR Cosmetics. All rights reserved.</Text>
     </Box>
     </>
   )
