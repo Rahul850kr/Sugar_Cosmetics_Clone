@@ -92,3 +92,26 @@ padding: 5px;
     /* font-weight: bold; */
     margin-top: 1rem;
 }
+
+.get{
+    height: 5rem;
+    width: 46%;
+    border: 1px solid red;
+    margin: auto;
+    display: flex;
+  justify-content: space-evenly;
+
+}
+.getimg{
+    height: 3rem;
+    width: 9rem;
+}
+.the{
+    color: white;
+}
+.tap{
+    color: #969699;
+}
+.copy{
+    color: #969699;
+}
