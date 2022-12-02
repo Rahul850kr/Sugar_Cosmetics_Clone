@@ -60,7 +60,6 @@ const Navbar = () => {
     <Box className={styles.menulist}>
     
 
-            {/* <Text>Makeup</Text> */}
 
 
             <Menu className={styles.menuitem}>
@@ -155,15 +154,7 @@ const Navbar = () => {
     </Box>
 
 
-    {/* <Menu isLazy>
-  <MenuButton>Open menu</MenuButton>
-  <MenuList>
-    
-    <MenuItem>New Window</MenuItem>
-    <MenuItem>Open Closed Tab</MenuItem>
-    <MenuItem>Open File</MenuItem>
-  </MenuList>
-</Menu> */}
+  
 
 
 
