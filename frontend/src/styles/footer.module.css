@@ -76,3 +76,19 @@ padding: 5px;
     color: white;
     font-size: 25px;
 }
+
+.call{
+    display: flex;
+    justify-content: space-around;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+}
+.join{
+    display: flex;
+    justify-content: space-around;
+    color: #969699;
+    font-size: 18px;
+    /* font-weight: bold; */
+    margin-top: 1rem;
+}
