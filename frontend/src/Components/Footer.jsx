@@ -60,13 +60,25 @@ const Footer = () => {
           <Box className={styles.touch}>
              <Text>GET IN TOUCH</Text>
          </Box>
-         <Box>
+         <Box className={styles.call}>
           <Text>Call us at</Text>
           <Text>Support</Text>
           <Text>Careers</Text>
           <Text>Press & Media</Text>
           <Text>Influencer Collab</Text>
          </Box>
+
+          <Box className={styles.join}>
+            
+            <Text>1800-209-9933</Text>
+                  {/* Monday to Friday : 9 AM to 7 PM */}
+            <Text>hello@sugarcosmetics.com</Text>
+            <Text>We're hiring!</Text>
+            <Text>pr@sugarcosmetics.com</Text>
+            <Text>Join Us</Text>
+           
+          </Box>
+
     </Box>
     </>
   )
