@@ -4,7 +4,7 @@ import styles from "../styles/description.module.css"
 const Description = () => {
   return (
     <Box className={styles.home}>
-         <Box >
+         <Box className={styles.homei}>
             <Text>Home
                 <span><i class="fa-solid fa-chevron-right"></i></span>
             </Text>
