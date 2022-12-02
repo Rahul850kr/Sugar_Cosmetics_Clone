@@ -1,6 +1,16 @@
-import { Box, Button, Flex, Heading, Image, Input, Menu, MenuButton, MenuItem, MenuList, Spacer, Text, VStack } from '@chakra-ui/react'
+import { Box, Button, Image, Input,  Text } from '@chakra-ui/react'
 import React from 'react'
 import styles from "../styles/navbar.module.css"
+import {
+  Menu,
+  MenuButton,
+  MenuList,
+  MenuItem,
+  MenuItemOption,
+  MenuGroup,
+  MenuOptionGroup,
+  MenuDivider,
+} from '@chakra-ui/react'
 const Navbar = () => {
   return (
     <Box className={styles.navbar}>
@@ -48,18 +58,28 @@ const Navbar = () => {
 <Box className={styles.menu}>
 
     <Box className={styles.menulist}>
-    <Menu isLazy>
-            <MenuButton>Makeup</MenuButton>
-            <MenuList>
     
-    <MenuItem>New Window</MenuItem>
-    <MenuItem>Open Closed Tab</MenuItem>
-    <MenuItem>Open File</MenuItem>
-  </MenuList>
 
-  </Menu>
+            {/* <Text>Makeup</Text> */}
 
-            
+
+            <Menu>
+               <MenuButton as={Button}>
+               Makeup
+               </MenuButton>
+               <MenuList>
+                <MenuItem>Download</MenuItem>
+                <MenuItem>Create a Copy</MenuItem>
+                <MenuItem>Mark as Draft</MenuItem>
+                <MenuItem>Delete</MenuItem>
+                <MenuItem>Attend a Workshop</MenuItem>
+              </MenuList>
+            </Menu>
+
+
+
+
+
             <Text>Brushes</Text>
             <Text>Skincare</Text>
             <Text>Gifting</Text>
