@@ -1,4 +1,4 @@
-import { Box, Button, Image, Input,  Text } from '@chakra-ui/react'
+import { Box, Button, Heading, Image, Input,  List,  Text } from '@chakra-ui/react'
 import React from 'react'
 import styles from "../styles/navbar.module.css"
 import {
@@ -63,17 +63,20 @@ const Navbar = () => {
             {/* <Text>Makeup</Text> */}
 
 
-            <Menu>
+            <Menu className={styles.menuitem}>
                <MenuButton as={Button}>
                Makeup
                </MenuButton>
                <MenuList>
-                <MenuItem>Download</MenuItem>
-                <MenuItem>Create a Copy</MenuItem>
-                <MenuItem>Mark as Draft</MenuItem>
-                <MenuItem>Delete</MenuItem>
-                <MenuItem>Attend a Workshop</MenuItem>
+                <Text>Lips</Text>
+                <MenuItem>Lipsitics</MenuItem>
+                <MenuItem>Lip Care</MenuItem>
+                <MenuItem>Liquid Lip Colours</MenuItem>
+                <MenuItem>Value Sets</MenuItem>
+                <MenuItem>Gifting</MenuItem>
+               
               </MenuList>
+             
             </Menu>
 
 
