@@ -8,3 +8,9 @@
     display: flex;
    padding: 10px;
 }
+.container{
+    height: 50rem;
+    width: 70%;
+    margin: auto;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
