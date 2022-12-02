@@ -56,7 +56,17 @@ const Footer = () => {
                 <Text>FAQs</Text>
                 <Text>About Us</Text>
          </Box>
-        
+
+          <Box className={styles.touch}>
+             <Text>GET IN TOUCH</Text>
+         </Box>
+         <Box>
+          <Text>Call us at</Text>
+          <Text>Support</Text>
+          <Text>Careers</Text>
+          <Text>Press & Media</Text>
+          <Text>Influencer Collab</Text>
+         </Box>
     </Box>
     </>
   )
