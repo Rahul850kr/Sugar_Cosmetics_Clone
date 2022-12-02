@@ -83,11 +83,14 @@
     height: 3.5rem;
     width: 50%;
     /* border: 1px solid red; */
-    color: white;
+    color: rgb(240, 128, 128);
     display: flex;
     align-items: center;
     justify-content: space-around; 
 }
 .menulist>Text:hover{
     cursor: pointer;
+}
+.menuitem{
+    color: #000;
 }
