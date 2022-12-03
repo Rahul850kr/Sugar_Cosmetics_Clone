@@ -1,7 +1,7 @@
 .container{
     height: 22rem;
     width: 100%;
-    border: 1px solid red;
+   
  
     background-image: url("https://sugarcosmetics.com/desc-images/Rectangle_background.svg");
 }
@@ -20,7 +20,7 @@
 .sugarbox{
     height: 35rem;
     width: 100%;
-    border: 1px solid red;
+    /* border: 1px solid red; */
     background-color: black;
 }
 /* .slog{
@@ -72,7 +72,7 @@ padding: 5px;
 {
     height: 3rem;
     width: 20rem;
-    border: 1px solid red;
+    /* border: 1px solid red; */
     color: white;
     font-size: 25px;
 }
@@ -96,7 +96,7 @@ padding: 5px;
 .get{
     height: 5rem;
     width: 46%;
-    border: 1px solid red;
+    /* border: 1px solid red; */
     margin: auto;
     display: flex;
   justify-content: space-evenly;
