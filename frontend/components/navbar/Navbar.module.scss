@@ -1,41 +1,69 @@
-.navbarContainer{
-    width: 100%;
-    background-color: black;
-    height: 100px;
-    display: flex;
-    align-items: center;
-    padding: 0 2rem;
+.navbarContainer {
+  width: 100%;
+  background-color: black;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2.5rem;
 }
 
-.logo{
-    width: 200px;
-    height: 55%;
+.logo {
+  width: 200px;
+  height: 55%;
 }
 
-.searchBox{
-    width: 800px;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.searchBox {
+  width: 900px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.inputField{
-    background-color: #212121;
-    width: 80%;
-    height: 100%;
-    color: white !important;
-    padding: 0 !important;
-    font-size: 16px !important;
+.inputField {
+  background-color: #212121;
+  width: 80%;
+  height: 100%;
+  color: white;
+  font-size: 1rem;
+  padding: 0 10px;
+  box-sizing: border-box;
+  border: 1px solid white;
+  border-radius: 5px 0 0 5px;
 }
 
-.searchTextBox{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: .5rem;
-    height: 100%;
-    width: 20%;
-    background-color: white;
-    border-radius: 0 10px 10px 0;
+.inputField:focus {
+  outline: none;
+}
+
+.searchTextBox {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  height: 100%;
+  width: 20%;
+  background-color: white;
+  border-radius: 0 10px 10px 0;
+}
+
+.loginButton {
+  color: white;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.actionButtonsBox {
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  justify-content: space-between;
+}
+
+.wishIcon {
+  cursor: pointer;
 }

@@ -1,34 +1,69 @@
-import React from 'react'
+import React from "react";
 import styles from "./Navbar.module.scss";
-import { Box, TextField } from '@mui/material';
-import SearchIcon from '@mui/icons-material/Search';
+import {
+  Box,
+  Button,
+  Menu,
+  MenuItem,
+  Tooltip,
+  TooltipProps,
+  tooltipClasses,
+} from "@mui/material";
+import SearchIcon from "@mui/icons-material/Search";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
+import styled from "@emotion/styled";
+import MenubarDropdown from "../menubarDropdown/MenubarDropdown";
 
 const Navbar = () => {
-    const inputFieldStyles = {
-        color: 'white', // Text color
-        '& .MuiInputBase-input': {
-            '&.Mui-focused': {
-              borderColor: 'green', // Change focus border color here
-            },
-          },
-      };
-  return (
-    <nav className={styles.navbarContainer} >
-      <img src="https://cdn.sanity.io/images/gxmub2ol/production/98a9ebae1456c75c727d5fab8c934dae908a144c-1493x380.png" alt="" className={styles.logo} />
-          <Box className={styles.searchBox}>
-            <TextField
-                className={styles.inputField}
-                placeholder="Try 'Liquid Lipstick'"
-               
-            />
-            <Box className={styles.searchTextBox} >
-                <SearchIcon/>
-                Search
-            </Box>
-          </Box>
-    
-    </nav>
-  )
-}
+  const LightTooltip = styled(({ className, ...props }: TooltipProps) => (
+    <Tooltip {...props} classes={{ popper: className }} />
+  ))(({ theme }) => ({
+    [`& .${tooltipClasses.tooltip}`]: {
+      backgroundColor: "white",
+      color: "rgba(0, 0, 0, 0.87)",
+      // boxShadow: theme.shadows[1],
+      fontSize: 14,
+      fontWeight: "bold",
+    },
+  }));
 
-export default Navbar
+  return (
+    <Box width={"100%"}>
+      <nav className={styles.navbarContainer}>
+        <img
+          src="https://cdn.sanity.io/images/gxmub2ol/production/98a9ebae1456c75c727d5fab8c934dae908a144c-1493x380.png"
+          alt=""
+          className={styles.logo}
+        />
+        <Box className={styles.searchBox}>
+          <input
+            type="text"
+            className={styles.inputField}
+            placeholder="Try 'Liquid Lipstick'"
+          />
+          <Box className={styles.searchTextBox}>
+            <SearchIcon />
+            Search
+          </Box>
+        </Box>
+        <Box className={styles.loginButton}>
+          <AccountCircleIcon />
+          Login/Register
+        </Box>
+        <Box className={styles.actionButtonsBox}>
+          <LightTooltip title="Wishlist">
+            <FavoriteBorderIcon className={styles.wishIcon} />
+          </LightTooltip>
+          <LightTooltip title="Cart">
+            <AddShoppingCartIcon className={styles.wishIcon} />
+          </LightTooltip>
+        </Box>
+      </nav>
+      <MenubarDropdown />
+    </Box>
+  );
+};
+
+export default Navbar;

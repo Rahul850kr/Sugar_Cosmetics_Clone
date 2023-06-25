@@ -1,0 +1,145 @@
+.mainContainer {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  .leftSection {
+    height: 100%;
+    width: 38%;
+    background: url("https://media.sugarcosmetics.com/upload/authSIe2.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+  .rightSection {
+    height: 100%;
+    width: 62%;
+    background: url("https://media.sugarcosmetics.com/upload/loginPageBackGroundTexture.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    padding: 0 2rem;
+    box-sizing: border-box;
+    .backArrowBox {
+      width: 100%;
+      height: 5rem;
+      display: flex;
+      justify-content: start;
+      align-items: center;
+
+      .backArrow {
+        font-weight: bolder;
+        cursor: pointer;
+      }
+    }
+
+    .hiImageBox {
+      width: 100%;
+      height: auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      img {
+        height: 150px;
+      }
+    }
+
+    .loginSignUpText {
+      text-align: center;
+      font-weight: bolder;
+      font-size: 18px;
+      margin-top: 1rem;
+    }
+
+    .inputFieldBox {
+      width: 100%;
+      height: 10rem;
+      //   border: 1px solid red;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .plainTextBox {
+      width: 100%;
+      padding: 0 8rem;
+      text-align: center;
+      color: #757575;
+      font-size: 14px;
+    }
+
+    .inputPrefix {
+      //   color: red;
+      font-weight: bolder;
+      margin-right: 1rem;
+    }
+    .inputSuffix {
+      margin-left: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: black;
+      color: white;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    .sendOtpButtonBox {
+      width: 100%;
+      height: 12rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-bottom: 1px dashed rgb(174, 174, 174);
+      .sendOtpButton {
+        background-color: black !important;
+        color: white !important;
+        font-weight: bold !important;
+        font-size: 16px !important;
+        cursor: pointer !important;
+      }
+    }
+
+    .whatsapptextBox {
+      width: 100%;
+      height: 3rem;
+      text-align: center;
+      .whatsappText {
+        font-size: 13px;
+        color: gray;
+      }
+
+      .termsCondition {
+        font-size: 14px;
+        color: #fc2779;
+        font-weight: bold;
+        cursor: pointer;
+      }
+    }
+
+    .needHelpBox {
+      display: flex;
+      justify-content: end;
+      align-items: end;
+      width: 100%;
+      height: 6rem;
+      font-size: 16px;
+      font-weight: bold;
+      border-bottom: 1px dashed rgb(174, 174, 174);
+      padding-bottom: 1rem;
+      .termsCondition2 {
+        color: #fc2779;
+        cursor: pointer;
+      }
+    }
+
+    .lastTextBox {
+      text-align: center;
+      font-size: 14px;
+      margin-top: 2rem;
+      span {
+        color: #fc2779;
+        cursor: pointer;
+      }
+    }
+  }
+}
