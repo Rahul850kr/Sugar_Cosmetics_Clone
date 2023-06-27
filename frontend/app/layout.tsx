@@ -1,20 +1,36 @@
-import './globals.css'
-import { Inter } from 'next/font/google'
+"use client";
+import MyContextProvider from "@/context/MyContextProvider";
+import "./globals.css";
+import { Inter } from "next/font/google";
+import { CssBaseline } from "@mui/material";
+import { CacheProvider, ThemeProvider } from "@emotion/react";
+import { cache } from "@emotion/css";
+import { theme } from "@/theme";
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ["latin"] });
 
-export const metadata = {
-  title: 'Sugar Cosmetics Clone',
-}
+const metadata = {
+  title: "Sugar Cosmetics Clone",
+};
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <head>
+        <title>{metadata.title}</title>
+      </head>
+      <body className={inter.className}>
+        <CacheProvider value={cache}>
+          <ThemeProvider theme={theme}>
+            <CssBaseline />
+            <MyContextProvider>{children}</MyContextProvider>
+          </ThemeProvider>
+        </CacheProvider>
+      </body>
     </html>
-  )
+  );
 }
