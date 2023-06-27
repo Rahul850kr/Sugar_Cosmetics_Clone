@@ -1,12 +1,14 @@
 "use client";
 import { Box, Button, Checkbox, TextField } from "@mui/material";
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import styles from "./login.module.scss";
 import CloseIcon from "@mui/icons-material/Close";
 import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
+import { AppContext } from "@/context/MyContextProvider";
 
 const Login = () => {
   const label = { inputProps: { "aria-label": "Checkbox demo" } };
+  const { test, handleText } = useContext(AppContext);
 
   const handleInputChange = (event: any) => {
     const { value } = event.target;
@@ -23,6 +25,14 @@ const Login = () => {
       event?.preventDefault();
     }
   };
+
+  //   const handleText = () => {
+  //     setText("pallavee");
+  //   };
+
+  useEffect(() => {
+    console.log(test);
+  }, [test]);
   return (
     <Box className={styles.mainContainer}>
       <Box className={styles.leftSection}></Box>
@@ -60,9 +70,20 @@ const Login = () => {
         </Box>
         <Box style={{ height: "5rem" }}></Box>
         <Box className={styles.sendOtpButtonBox}>
-          <Button className={styles.sendOtpButton} variant="contained">
+          <Button
+            onClick={() => {
+              console.log("Before  ", test);
+              //   setText("pallavee");
+              //   handleSetText();
+              handleText("pallavee");
+              console.log("After  ", test);
+            }}
+            className={styles.sendOtpButton}
+            variant="contained"
+          >
             SEND ME OTP
           </Button>
+          <p>{test}</p>
         </Box>
         <Box className={styles.whatsapptextBox}>
           <Checkbox
