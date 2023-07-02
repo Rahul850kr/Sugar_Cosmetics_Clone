@@ -4,7 +4,6 @@ import React, { useContext, useEffect } from "react";
 import styles from "./login.module.scss";
 import CloseIcon from "@mui/icons-material/Close";
 import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
-import { AppContext } from "@/context/MyContextProvider";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 
