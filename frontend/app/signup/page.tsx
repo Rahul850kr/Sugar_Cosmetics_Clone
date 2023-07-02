@@ -1,26 +1,15 @@
 "use client";
 import { Box, Button, Checkbox, TextField } from "@mui/material";
 import React from "react";
-import styles from "./otp.module.scss";
+import styles from "./signup.module.scss";
 import CloseIcon from "@mui/icons-material/Close";
 import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
+import VisibilityIcon from "@mui/icons-material/Visibility";
+import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 
-const Otp = () => {
+const Signup = () => {
   const label = { inputProps: { "aria-label": "Checkbox demo" } };
-  const handleInputChange = (event: any) => {
-    const { value } = event.target;
-    event.target.value = value.replace(/\D/g, "").slice(0, 4);
-  };
-  const handleValidateMobileNumber = (e: any) => {
-    if (
-      e.keyCode == 69 ||
-      e.keyCode == 190 ||
-      e.keyCode == 189 ||
-      e.keyCode == 187
-    ) {
-      event?.preventDefault();
-    }
-  };
+
   return (
     <Box className={styles.mainContainer}>
       <Box className={styles.leftSection}></Box>
@@ -31,19 +20,51 @@ const Otp = () => {
         <Box className={styles.hiImageBox}>
           <img src="https://media.sugarcosmetics.com/upload/Hi!.png" alt="Hi" />
         </Box>
-        <Box className={styles.loginSignUpText}>Login/Sign Up Using Phone</Box>
+        <Box className={styles.loginSignUpText}>Sign Up Here</Box>
         <Box className={styles.inputFieldBox}>
           <TextField
-            type="number"
-            onChange={handleInputChange}
-            onKeyDown={handleValidateMobileNumber}
-            label="Enter OTP"
+            type="text"
+            label="Full Name"
             id="outlined-start-adornment"
-            sx={{ m: 1, width: "30ch" }}
+            sx={{ m: 1, width: "50ch" }}
             InputProps={{
               endAdornment: (
                 <Box className={styles.inputSuffix}>
                   <CloseIcon fontSize="small" />
+                </Box>
+              ),
+            }}
+          />
+        </Box>
+        <Box className={styles.inputFieldBox}>
+          <TextField
+            type="text"
+            label="Email"
+            id="outlined-start-adornment"
+            sx={{ m: 1, width: "50ch" }}
+            InputProps={{
+              endAdornment: (
+                <Box className={styles.inputSuffix}>
+                  <CloseIcon fontSize="small" />
+                </Box>
+              ),
+            }}
+          />
+        </Box>
+        <Box className={styles.inputFieldBox}>
+          <TextField
+            type="password"
+            label="Password"
+            id="outlined-start-adornment"
+            sx={{ m: 1, width: "50ch" }}
+            InputProps={{
+              endAdornment: (
+                <Box className={styles.inputSuffixBox}>
+                  <VisibilityIcon />
+                  <VisibilityOffIcon />
+                  <Box className={styles.inputSuffix}>
+                    <CloseIcon fontSize="small" />
+                  </Box>
                 </Box>
               ),
             }}
@@ -94,4 +115,4 @@ const Otp = () => {
   );
 };
 
-export default Otp;
+export default Signup;

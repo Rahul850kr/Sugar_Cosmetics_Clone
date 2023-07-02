@@ -9,7 +9,7 @@ type childrenType = {
 };
 
 export const AppContext = createContext<MyContextType>({
-  test: "rahul",
+  test: "",
   handleText: () => {},
 });
 
