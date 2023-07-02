@@ -2,7 +2,7 @@
 import MyContextProvider from "@/context/MyContextProvider";
 import "./globals.css";
 import { Inter } from "next/font/google";
-import { CssBaseline } from "@mui/material";
+import { CssBaseline } from "../lib/mui";
 import { CacheProvider, ThemeProvider } from "@emotion/react";
 import { cache } from "@emotion/css";
 import { theme } from "@/theme";
