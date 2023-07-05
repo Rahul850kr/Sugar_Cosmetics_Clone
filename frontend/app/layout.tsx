@@ -2,7 +2,7 @@
 import MyContextProvider from "@/context/MyContextProvider";
 import "./globals.css";
 import { Inter } from "next/font/google";
-import { CssBaseline } from "../lib/mui";
+import { CssBaseline } from "@mui/material";
 import { CacheProvider, ThemeProvider } from "@emotion/react";
 import { cache } from "@emotion/css";
 import { theme } from "@/theme";
@@ -23,7 +23,7 @@ export default function RootLayout({
       <head>
         <title>{metadata.title}</title>
       </head>
-      <body className={inter.className}>
+      <body suppressHydrationWarning={true} className={inter.className}>
         <CacheProvider value={cache}>
           <ThemeProvider theme={theme}>
             <CssBaseline />

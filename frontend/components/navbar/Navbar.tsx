@@ -1,20 +1,14 @@
 import React from "react";
 import styles from "./Navbar.module.scss";
-import {
-  Box,
-  Button,
-  Menu,
-  MenuItem,
-  Tooltip,
-  TooltipProps,
-  tooltipClasses,
-} from "@mui/material";
+import Link from "next/link";
+import { Box, Tooltip, TooltipProps, tooltipClasses } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import styled from "@emotion/styled";
 import MenubarDropdown from "../menubarDropdown/MenubarDropdown";
+import MenuIcon from "@mui/icons-material/Menu";
 
 const Navbar = () => {
   const LightTooltip = styled(({ className, ...props }: TooltipProps) => (
@@ -32,6 +26,9 @@ const Navbar = () => {
   return (
     <Box width={"100%"}>
       <nav className={styles.navbarContainer}>
+        <Box className={styles.hamburgerBox} >
+          <MenuIcon className={styles.hamburger} />
+        </Box>
         <img
           src="https://cdn.sanity.io/images/gxmub2ol/production/98a9ebae1456c75c727d5fab8c934dae908a144c-1493x380.png"
           alt=""
@@ -50,7 +47,8 @@ const Navbar = () => {
         </Box>
         <Box className={styles.loginButton}>
           <AccountCircleIcon />
-          Login/Register
+          <Link href={"/login"}>Login</Link>/
+          <Link href={"/signup"}>Register</Link>
         </Box>
         <Box className={styles.actionButtonsBox}>
           <LightTooltip title="Wishlist">
