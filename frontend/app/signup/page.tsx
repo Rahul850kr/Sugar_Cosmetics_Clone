@@ -20,7 +20,7 @@ const Signup = () => {
         <Box className={styles.hiImageBox}>
           <img src="https://media.sugarcosmetics.com/upload/Hi!.png" alt="Hi" />
         </Box>
-        <Box className={styles.loginSignUpText}>Sign Up Here</Box>
+        <Box className={styles.loginSignUpText}>Register Here</Box>
         <Box className={styles.inputFieldBox}>
           <TextField
             type="text"
@@ -70,10 +70,6 @@ const Signup = () => {
             }}
           />
         </Box>
-        <Box className={styles.resendOtpTextBox}>
-          Didn’t get the OTP?
-          <span> Resend now</span>
-        </Box>
         <Box className={styles.plainTextBox}>
           Registering for this site allows you to access your order status and
           history. Just fill in the above fields, and we'll get a new account
@@ -83,7 +79,7 @@ const Signup = () => {
 
         <Box className={styles.sendOtpButtonBox}>
           <Button className={styles.sendOtpButton} variant="contained">
-            VALIDATE THIS
+            Register
           </Button>
         </Box>
         <Box className={styles.whatsapptextBox}>

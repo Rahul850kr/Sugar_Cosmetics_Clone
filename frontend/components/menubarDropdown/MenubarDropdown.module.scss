@@ -2,6 +2,9 @@
   width: 100%;
   height: 50px;
   background-color: #141414;
+  @media (max-width: 900px) {
+    display: none;
+  }
 }
 
 .menuBox {
