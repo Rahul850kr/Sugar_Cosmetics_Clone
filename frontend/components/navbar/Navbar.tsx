@@ -26,14 +26,16 @@ const Navbar = () => {
   return (
     <Box width={"100%"}>
       <nav className={styles.navbarContainer}>
-        <Box className={styles.hamburgerBox} >
+        <Box className={styles.hamburgerBox}>
           <MenuIcon className={styles.hamburger} />
         </Box>
-        <img
-          src="https://cdn.sanity.io/images/gxmub2ol/production/98a9ebae1456c75c727d5fab8c934dae908a144c-1493x380.png"
-          alt=""
-          className={styles.logo}
-        />
+        <Link href={"/"}>
+          <img
+            src="	https://d32baadbbpueqt.cloudfront.net/Logo/636b4da7-4c87-4b54-9b5d-e3cf31ba292a.gif"
+            alt=""
+            className={styles.logo}
+          />
+        </Link>
         <Box className={styles.searchBox}>
           <input
             type="text"

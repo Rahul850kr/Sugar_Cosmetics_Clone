@@ -7,7 +7,7 @@ import { AppContext } from "@/context/MyContextProvider";
 import { Box, useTheme } from "@mui/material";
 
 const Carousel = () => {
-  const { carouselImages, handleGetCarouselImages } = useContext(AppContext);
+  const { screenUi } = useContext(AppContext);
   const theme = useTheme();
 
   const settings = {
@@ -18,13 +18,10 @@ const Carousel = () => {
     slidesToScroll: 1,
   };
 
-  useEffect(() => {
-    handleGetCarouselImages();
-  }, []);
   return (
     <Box className={styles.mainBox}>
       <Slider autoplaySpeed={3000} autoplay={true} {...settings}>
-        {carouselImages.map((element: any, index) => {
+        {screenUi?.carouselData?.map((element: any) => {
           return (
             <Box
               sx={{
