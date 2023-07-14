@@ -2,12 +2,14 @@ const express = require("express");
 const { connection } = require("./config/db");
 const { CarouselRoutes } = require("./Routes/Carousel.routes");
 const cors = require("cors");
+const { HomepageRoutes } = require("./Routes/HomepageUI.routes");
 require("dotenv").config();
 const port = process.env.PORT || 7500;
 const app = express();
 app.use(cors(), express.json());
 
 app.use("/", CarouselRoutes);
+app.use("/screenUi", HomepageRoutes);
 
 // app.get("/", (req, res) => {
 //   res.send("Welcome to sugar");
