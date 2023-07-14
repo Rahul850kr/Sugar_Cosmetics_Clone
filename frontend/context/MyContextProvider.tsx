@@ -1,29 +1,29 @@
 "use client";
 import { ReactNode, createContext, useState } from "react";
 interface MyContextType {
-  carouselImages: Object[];
-  handleGetCarouselImages: () => void;
+  screenUi: any;
+  handleGetHomeScreenUi: () => void;
 }
 type childrenType = {
   children: ReactNode;
 };
 
 export const AppContext = createContext<MyContextType>({
-  carouselImages: [],
-  handleGetCarouselImages: () => {},
+  screenUi: {},
+  handleGetHomeScreenUi: () => {},
 });
 
 const MyContextProvider = ({ children }: childrenType) => {
-  const [carouselImages, setCarouselImages] = useState<Object[]>([]);
+  const [screenUi, setScreenUi] = useState<Object>({});
 
-  const handleGetCarouselImages = async () => {
-    let res = await fetch("http://localhost:8080/carouselData");
+  const handleGetHomeScreenUi = async () => {
+    let res = await fetch("http://localhost:8080/screenUi");
     let fetchedData = await res.json();
-    setCarouselImages(fetchedData.images);
+    setScreenUi(fetchedData.homepageUi);
   };
 
   return (
-    <AppContext.Provider value={{ carouselImages, handleGetCarouselImages }}>
+    <AppContext.Provider value={{ screenUi, handleGetHomeScreenUi }}>
       {children}
     </AppContext.Provider>
   );

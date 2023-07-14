@@ -1,6 +1,12 @@
 const mongoose = require("mongoose");
 
 const homepageUiSchema = mongoose.Schema({
+  carouselData: [
+    {
+      id: Number,
+      imageUrl: String,
+    },
+  ],
   bestSellers: [
     {
       id: Number,
@@ -99,6 +105,34 @@ const homepageUiSchema = mongoose.Schema({
     {
       id: Number,
       imageUrl: String,
+    },
+  ],
+  skinCareBasics: [
+    {
+      id: Number,
+      imageUrl: String,
+      name: String,
+      shadesAvailable: Boolean,
+      strikedPriceAvailable: Boolean,
+      offAvailable: Boolean,
+      shadesCount: Number,
+      strikedPrice: Number,
+      price: Number,
+      discoount: Number,
+      buttonText: String,
+    },
+  ],
+  sugarBeautyBlog: [
+    {
+      id: Number,
+      imageUrl: String,
+    },
+  ],
+  explore: [
+    {
+      id: Number,
+      imageUrl: String,
+      category: String,
     },
   ],
 });

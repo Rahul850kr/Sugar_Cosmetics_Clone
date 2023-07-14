@@ -2,11 +2,15 @@
 import Navbar from "@/components/navbar/Navbar";
 import styles from "./page.module.scss";
 import Carousel from "@/components/carousel/Carousel";
-import { Box, Paper } from "@mui/material";
+import { Box, CircularProgress, Paper } from "@mui/material";
 import BottomBar from "@/components/bottom-bar/BottomBar";
 import { useRouter } from "next/navigation";
+import { useContext, useEffect, useState } from "react";
+import { AppContext } from "@/context/MyContextProvider";
 
 export default function Home() {
+  const [pageLoader, setPageLoader] = useState(false);
+  const { screenUi, handleGetHomeScreenUi } = useContext(AppContext);
   const router = useRouter();
 
   const handleNavigateBottomBar = (newValue: any) => {
@@ -19,11 +23,30 @@ export default function Home() {
     }
   };
 
+  const fetchScreenUi = async () => {
+    setPageLoader(true);
+    await handleGetHomeScreenUi();
+    setPageLoader(false);
+  };
+
+  useEffect(() => {
+    fetchScreenUi();
+  }, []);
+
   return (
     <Box className={styles.homeContainer}>
-      <Navbar />
-      <Carousel />
-      <BottomBar handleNavigateBottomBar={handleNavigateBottomBar} />
+      {pageLoader ? (
+        <Box>
+          <CircularProgress />
+        </Box>
+      ) : (
+        <Box>
+          {" "}
+          <Navbar />
+          <Carousel />
+          <BottomBar handleNavigateBottomBar={handleNavigateBottomBar} />
+        </Box>
+      )}
     </Box>
   );
 }
