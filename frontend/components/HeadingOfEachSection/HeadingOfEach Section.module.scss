@@ -1,0 +1,24 @@
+.heading {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  left: 0;
+  right: 0;
+  top: 2rem;
+  hr {
+    width: 3%;
+    opacity: 1;
+    border: 0;
+    border-top: 2px solid #fc2779;
+    color: #fc2779;
+    background-color: #fc2779;
+  }
+  p {
+    font-size: 22px;
+    text-transform: capitalize;
+    color: white;
+    font-weight: bold;
+  }
+}

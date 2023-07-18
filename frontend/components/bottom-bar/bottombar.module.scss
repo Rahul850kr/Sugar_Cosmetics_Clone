@@ -2,3 +2,10 @@
   background-color: black;
   color: white;
 }
+
+.bottomBar {
+  display: none;
+  @media (max-width: 1000px) {
+    display: block;
+  }
+}
