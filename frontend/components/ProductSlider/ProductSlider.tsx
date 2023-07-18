@@ -18,7 +18,7 @@ const ProductSlider = ({ data }: any) => {
 
   return (
     <Box className={styles.sliderContainer}>
-      <Slider autoplaySpeed={3000} autoplay={true} {...settings}>
+      <Slider autoplaySpeed={4000} autoplay={true} {...settings}>
         {data?.map((element: any) => {
           return <SingleProduct element={element} />;
         })}
