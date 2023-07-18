@@ -10,20 +10,3 @@
   justify-content: center;
   align-items: center;
 }
-
-.imageContent {
-  width: 100%;
-  margin: auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-  .eachImageBox {
-    width: 50%;
-  }
-  img {
-    height: 100%;
-    width: 100%;
-    border-radius: 8px;
-  }
-}

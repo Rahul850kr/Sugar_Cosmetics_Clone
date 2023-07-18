@@ -10,20 +10,17 @@
   justify-content: center;
   align-items: center;
 }
-
-.imageContent {
+.eachImageBox {
   width: 100%;
+}
+
+.sliderContainer {
+  width: 100%;
+  //   border: 1px solid blue;
   margin: auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-  .eachImageBox {
-    width: 50%;
-  }
   img {
-    height: 100%;
-    width: 100%;
-    border-radius: 8px;
+    width: 95%;
+    margin: auto;
+    border-radius: 10px;
   }
 }

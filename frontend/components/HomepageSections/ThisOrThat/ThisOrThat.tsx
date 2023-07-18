@@ -12,7 +12,7 @@ const ThisOrThat = () => {
       <Box className={styles.imageContent}>
         {screenUi?.thisOrThat?.map((element: any, index: number) => {
           return (
-            <Box key={index}>
+            <Box className={styles.eachImageBox} key={index}>
               <img src={element.imageUrl} alt="" />
             </Box>
           );

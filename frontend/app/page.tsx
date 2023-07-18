@@ -17,6 +17,9 @@ import Refering from "@/components/HomepageSections/Refering/Refering";
 import SuperSavers from "@/components/HomepageSections/SuperSavers/SuperSavers";
 import NewlyLaunched from "@/components/HomepageSections/NewlyLaunched/NewlyLaunched";
 import ThisOrThat from "@/components/HomepageSections/ThisOrThat/ThisOrThat";
+import SkinCareBasics from "@/components/HomepageSections/SkinCareBasics/SkinCareBasics";
+import SugarBeautyBlog from "@/components/HomepageSections/SugarBeautyBlog/SugarBeautyBlog";
+import Explore from "@/components/HomepageSections/Expore/Explore";
 
 export default function Home() {
   const [pageLoader, setPageLoader] = useState(false);
@@ -64,6 +67,9 @@ export default function Home() {
           <SuperSavers />
           <NewlyLaunched />
           <ThisOrThat />
+          <SkinCareBasics />
+          <SugarBeautyBlog />
+          <Explore />
           <BottomBar handleNavigateBottomBar={handleNavigateBottomBar} />
         </Box>
       )}
