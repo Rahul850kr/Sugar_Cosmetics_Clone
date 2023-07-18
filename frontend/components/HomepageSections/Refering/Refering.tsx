@@ -8,7 +8,7 @@ const Refering = () => {
   const { screenUi } = useContext(AppContext);
   return (
     <Box className={styles.mainContainer}>
-      <HeadingOfEachSection headingName="REFER YOUR FRIENDS" color="black" />
+      <HeadingOfEachSection headingName="REFER YOUR FRIENDS" color="black"  fontSize="22px" />
       <Box className={styles.imageBox}>
         <img src={screenUi.referBanner} alt="banner" />
       </Box>

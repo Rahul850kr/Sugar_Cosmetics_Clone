@@ -1,0 +1,20 @@
+.mainContainer {
+  width: 100%;
+  height: 700px;
+  border: 2px solid red;
+}
+
+.upperBox {
+  width: 100%;
+  height: 40%;
+  position: relative;
+  text-align: center;
+  background-image: url("https://in.sugarcosmetics.com/desc-images/Rectangle_background.svg");
+  padding-top: 4.5rem;
+}
+
+.lowerBox {
+  width: 100%;
+  height: 60%;
+  background-color: black;
+}

@@ -9,7 +9,7 @@ const Giftings = () => {
   const { screenUi } = useContext(AppContext);
   return (
     <Box className={styles.mainContainer}>
-      <HeadingOfEachSection headingName="GIFTING" color="black" />
+      <HeadingOfEachSection headingName="GIFTING" color="black" fontSize="22px"  />
       <ProductSlider data={screenUi.giftings} />
     </Box>
   );

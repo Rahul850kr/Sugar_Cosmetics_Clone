@@ -9,7 +9,7 @@ const SkinCareBasics = () => {
   const { screenUi } = useContext(AppContext);
   return (
     <Box className={styles.mainContainer}>
-      <HeadingOfEachSection headingName="SKINCARE BASICS" color="black" />
+      <HeadingOfEachSection headingName="SKINCARE BASICS" color="black"  fontSize="22px" />
       <ProductSlider data={screenUi.skinCareBasics} />
     </Box>
   );

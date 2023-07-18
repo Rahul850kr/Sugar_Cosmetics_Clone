@@ -19,7 +19,7 @@ const Explore = () => {
   };
   return (
     <Box className={styles.mainContainer}>
-      <HeadingOfEachSection headingName="EXPLORE" color="black" />
+      <HeadingOfEachSection headingName="EXPLORE" color="black" fontSize="22px"  />
       <Box className={styles.sliderContainer}>
         <Slider autoplaySpeed={5000} autoplay={true} {...settings}>
           {screenUi?.explore?.map((element: any) => {

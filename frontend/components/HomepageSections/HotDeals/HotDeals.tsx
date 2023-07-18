@@ -8,7 +8,7 @@ const HotDeals = () => {
   const { screenUi } = useContext(AppContext);
   return (
     <Box className={styles.mainContainer}>
-      <HeadingOfEachSection headingName="HOT DEALS" color="black" />
+      <HeadingOfEachSection headingName="HOT DEALS" color="black" fontSize="22px"  />
       <Box className={styles.imageContent}>
         {screenUi?.hotDeals?.map((element: any, index: number) => {
           return (

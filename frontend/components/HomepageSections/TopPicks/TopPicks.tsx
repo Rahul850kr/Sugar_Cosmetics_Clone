@@ -5,10 +5,14 @@ import HeadingOfEachSection from "@/components/HeadingOfEachSection/HeadingOfEac
 import { AppContext } from "@/context/MyContextProvider";
 
 const TopPicks = () => {
-    const {screenUi} = useContext(AppContext);
+  const { screenUi } = useContext(AppContext);
   return (
     <Box className={styles.mainContainer}>
-      <HeadingOfEachSection headingName="TOP PICKS OF THE WEEK" color="black" />
+      <HeadingOfEachSection
+        headingName="TOP PICKS OF THE WEEK"
+        color="black"
+        fontSize="22px"
+      />
       <Box className={styles.imageContent}>
         {screenUi?.topPicks?.map((element: any, index: number) => {
           return (

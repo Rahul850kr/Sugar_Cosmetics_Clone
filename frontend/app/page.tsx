@@ -2,7 +2,7 @@
 import Navbar from "@/components/navbar/Navbar";
 import styles from "./page.module.scss";
 import Carousel from "@/components/carousel/Carousel";
-import { Box, CircularProgress, Paper } from "@mui/material";
+import { Box, CircularProgress } from "@mui/material";
 import BottomBar from "@/components/bottom-bar/BottomBar";
 import { useRouter } from "next/navigation";
 import { useContext, useEffect, useState } from "react";
@@ -20,10 +20,12 @@ import ThisOrThat from "@/components/HomepageSections/ThisOrThat/ThisOrThat";
 import SkinCareBasics from "@/components/HomepageSections/SkinCareBasics/SkinCareBasics";
 import SugarBeautyBlog from "@/components/HomepageSections/SugarBeautyBlog/SugarBeautyBlog";
 import Explore from "@/components/HomepageSections/Expore/Explore";
+import ReadMore from "@/components/ReadMore/ReadMore";
+import Footer from "@/components/footer/Footer";
 
 export default function Home() {
   const [pageLoader, setPageLoader] = useState(false);
-  const { screenUi, handleGetHomeScreenUi } = useContext(AppContext);
+  const { handleGetHomeScreenUi } = useContext(AppContext);
   const router = useRouter();
 
   const handleNavigateBottomBar = (newValue: any) => {
@@ -70,6 +72,8 @@ export default function Home() {
           <SkinCareBasics />
           <SugarBeautyBlog />
           <Explore />
+          <ReadMore />
+          <Footer />
           <BottomBar handleNavigateBottomBar={handleNavigateBottomBar} />
         </Box>
       )}

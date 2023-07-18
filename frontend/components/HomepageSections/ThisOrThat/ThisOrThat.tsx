@@ -8,7 +8,7 @@ const ThisOrThat = () => {
   const { screenUi } = useContext(AppContext);
   return (
     <Box className={styles.mainContainer}>
-      <HeadingOfEachSection headingName="THIS OR THAT" color="black" />
+      <HeadingOfEachSection headingName="THIS OR THAT" color="black" fontSize="22px"  />
       <Box className={styles.imageContent}>
         {screenUi?.thisOrThat?.map((element: any, index: number) => {
           return (

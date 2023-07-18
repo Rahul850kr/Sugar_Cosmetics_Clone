@@ -9,7 +9,7 @@ const JustIn = () => {
   const { screenUi } = useContext(AppContext);
   return (
     <Box className={styles.mainContainer}>
-      <HeadingOfEachSection headingName="JUST-IN" color="black" />
+      <HeadingOfEachSection headingName="JUST-IN" color="black"  fontSize="22px" />
       <ProductSlider data={screenUi.justIn} />
     </Box>
   );

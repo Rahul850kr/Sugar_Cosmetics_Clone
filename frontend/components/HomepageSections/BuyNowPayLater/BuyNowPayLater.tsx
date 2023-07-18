@@ -9,7 +9,7 @@ const BuyNowPayLater = () => {
   const { screenUi } = useContext(AppContext);
   return (
     <Box className={styles.mainContainer}>
-      <HeadingOfEachSection headingName="BUY NOW PAY LATER" color="black" />
+      <HeadingOfEachSection headingName="BUY NOW PAY LATER" color="black" fontSize="22px"  />
       <ProductSlider data={screenUi.buyNowPayLater} />
     </Box>
   );
