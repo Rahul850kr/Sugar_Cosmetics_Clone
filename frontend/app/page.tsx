@@ -7,6 +7,7 @@ import BottomBar from "@/components/bottom-bar/BottomBar";
 import { useRouter } from "next/navigation";
 import { useContext, useEffect, useState } from "react";
 import { AppContext } from "@/context/MyContextProvider";
+import BestSellers from "@/components/BestSellers/BestSellers";
 
 export default function Home() {
   const [pageLoader, setPageLoader] = useState(false);
@@ -44,6 +45,7 @@ export default function Home() {
           {" "}
           <Navbar />
           <Carousel />
+          <BestSellers />
           <BottomBar handleNavigateBottomBar={handleNavigateBottomBar} />
         </Box>
       )}

@@ -15,6 +15,7 @@ const BottomBar = ({ handleNavigateBottomBar }: any) => {
   }, []);
   return (
     <Paper
+      className={styles.bottomBar}
       sx={{ position: "fixed", bottom: 0, left: 0, right: 0, color: "red" }}
       elevation={3}
     >
