@@ -8,6 +8,7 @@ interface MyContextType {
   handleGetUserInfo: (payload: any) => void;
   isAuth: boolean;
   handleSetIsAuth: (payload: boolean) => void;
+  handleLogOut: () => void;
 }
 type childrenType = {
   children: ReactNode;
@@ -21,6 +22,7 @@ export const AppContext = createContext<MyContextType>({
   handleGetUserInfo: () => {},
   isAuth: false,
   handleSetIsAuth: () => {},
+  handleLogOut: () => {},
 });
 
 const MyContextProvider = ({ children }: childrenType) => {
@@ -70,7 +72,7 @@ const MyContextProvider = ({ children }: childrenType) => {
       let res = await fetch("http://localhost:8080/userInfo", {
         method: "GET",
         headers: {
-          "authorization": `Bearer ${token}`,
+          authorization: `Bearer ${token}`,
         },
       });
       let data = await res.json();
@@ -79,6 +81,12 @@ const MyContextProvider = ({ children }: childrenType) => {
     } catch (err) {
       console.log("ERROR IN GETTING USERINFO");
     }
+  };
+
+  const handleLogOut = () => {
+    document.cookie = `token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+    setUserInfo({});
+    setIsAuth(false);
   };
 
   return (
@@ -91,6 +99,7 @@ const MyContextProvider = ({ children }: childrenType) => {
         handleGetUserInfo,
         isAuth,
         handleSetIsAuth,
+        handleLogOut,
       }}
     >
       {children}

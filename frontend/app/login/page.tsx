@@ -4,6 +4,7 @@ import {
   Box,
   Button,
   Checkbox,
+  CircularProgress,
   Snackbar,
   TextField,
 } from "@mui/material";
@@ -29,13 +30,16 @@ const Login = () => {
   const [passwordCrossFlag, setPasswordCrossFlag] = useState<Boolean>(false);
   const [passwordVisible, setPasswordVisible] = useState(false);
   const contextProvider = useContext(AppContext);
+  const [loader, setLoader] = useState(false);
   const router = useRouter();
 
   const handleSubmit = async () => {
+    setLoader(true);
     let res = await contextProvider.handleLogin({
       email: email,
       password: password,
     });
+    setLoader(false);
     if (typeof res == "object") {
       if (!res["status"]) {
         if (res["msg"] == "USER NOT REGISTERED") {
@@ -117,6 +121,15 @@ const Login = () => {
       <Box className={styles.mobileViewCard}>
         <Box className={styles.inputFieldBox}>
           <TextField
+            onChange={(e) => {
+              setEmail(e.target.value);
+              if (e.target.value == "" || e.target.value == undefined) {
+                setEmailCrossFlag(false);
+              } else {
+                setEmailCrossFlag(true);
+              }
+            }}
+            value={email}
             fullWidth
             type="email"
             label="Email"
@@ -124,41 +137,88 @@ const Login = () => {
             sx={{ m: 1 }}
             InputProps={{
               endAdornment: (
-                <Box className={styles.inputSuffix}>
-                  <CloseIcon fontSize="small" />
-                </Box>
+                <>
+                  {emailCrossFlag && (
+                    <Box
+                      className={styles.inputSuffix}
+                      onClick={() => {
+                        setEmail("");
+                        setEmailCrossFlag(false);
+                      }}
+                    >
+                      <CloseIcon fontSize="small" />
+                    </Box>
+                  )}
+                </>
               ),
             }}
           />
         </Box>
         <Box className={styles.inputFieldBox}>
           <TextField
+            onChange={(e) => {
+              setPassword(e.target.value);
+              if (e.target.value == "" || e.target.value == undefined) {
+                setPasswordCrossFlag(false);
+              } else {
+                setPasswordCrossFlag(true);
+              }
+            }}
             fullWidth
-            type="password"
+            type={passwordVisible ? "text" : "password"}
             label="Password"
+            value={password}
             id="outlined-start-adornment"
             sx={{ m: 1 }}
             InputProps={{
               endAdornment: (
-                <Box className={styles.inputSuffixBox}>
-                  <VisibilityIcon />
-                  <VisibilityOffIcon />
-                  <Box className={styles.inputSuffix}>
-                    <CloseIcon fontSize="small" />
+                <>
+                  <Box className={styles.inputSuffixBox}>
+                    {!passwordVisible ? (
+                      <VisibilityIcon
+                        sx={{ cursor: "pointer" }}
+                        onClick={() => {
+                          setPasswordVisible(true);
+                        }}
+                      />
+                    ) : (
+                      <VisibilityOffIcon
+                        sx={{ cursor: "pointer" }}
+                        onClick={() => {
+                          setPasswordVisible(false);
+                        }}
+                      />
+                    )}
+
+                    {passwordCrossFlag && (
+                      <Box className={styles.inputSuffix}>
+                        <CloseIcon
+                          fontSize="small"
+                          onClick={() => {
+                            setPassword("");
+                            setPasswordCrossFlag(false);
+                          }}
+                        />
+                      </Box>
+                    )}
                   </Box>
-                </Box>
+                </>
               ),
             }}
           />
         </Box>
         <Box className={styles.sendOtpButtonBox}>
-          <Button
-            onClick={() => {}}
-            className={styles.sendOtpButton}
-            variant="contained"
-          >
-            Login
-          </Button>
+          {loader ? (
+            <CircularProgress color="secondary" />
+          ) : (
+            <Button
+              onClick={handleSubmit}
+              className={styles.sendOtpButton}
+              variant="contained"
+            >
+              Login
+            </Button>
+          )}
         </Box>
       </Box>
       <Box className={styles.leftSection}>
@@ -270,13 +330,17 @@ const Login = () => {
           </Box>
           <Box style={{ height: "5rem" }}></Box>
           <Box className={styles.sendOtpButtonBox}>
-            <Button
-              onClick={handleSubmit}
-              className={styles.sendOtpButton}
-              variant="contained"
-            >
-              Login
-            </Button>
+            {loader ? (
+              <CircularProgress color="secondary" />
+            ) : (
+              <Button
+                onClick={handleSubmit}
+                className={styles.sendOtpButton}
+                variant="contained"
+              >
+                Login
+              </Button>
+            )}
           </Box>
           <Box className={styles.whatsapptextBox}>
             <Checkbox
