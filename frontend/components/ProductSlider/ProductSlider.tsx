@@ -19,8 +19,12 @@ const ProductSlider = ({ data }: any) => {
   return (
     <Box className={styles.sliderContainer}>
       <Slider autoplaySpeed={4000} autoplay={true} {...settings}>
-        {data?.map((element: any) => {
-          return <SingleProduct element={element} />;
+        {data?.map((element: any, index: any) => {
+          return (
+            <Box key={index}>
+              <SingleProduct element={element} />
+            </Box>
+          );
         })}
       </Slider>
     </Box>

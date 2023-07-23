@@ -9,7 +9,7 @@ const BestSellers = () => {
   const { screenUi } = useContext(AppContext);
   return (
     <Box className={styles.productSliderContainer}>
-      <HeadingOfEachSection headingName="BESTSELLERS" color="white" />
+      <HeadingOfEachSection headingName="BESTSELLERS" color="white" fontSize="22px" />
       <ProductSlider data={screenUi.bestSellers} />
     </Box>
   );

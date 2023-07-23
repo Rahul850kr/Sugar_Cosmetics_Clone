@@ -1,13 +1,15 @@
 const express = require("express");
 const { connection } = require("./config/db");
 const cors = require("cors");
-const { HomepageRoutes } = require("./Routes/HomepageUI.routes");
+const { AllRoutes } = require("./Routes/AllROutes");
+// const { HomepageRoutes } = require("./Routes/HomepageUI.routes");
 require("dotenv").config();
+const cookieParser = require("cookie-parser");
 const port = process.env.PORT || 7500;
 const app = express();
-app.use(cors(), express.json());
+app.use(cors(), express.json(), cookieParser());
 
-app.use("/screenUi", HomepageRoutes);
+app.use("/", AllRoutes);
 
 app.listen(port, async () => {
   try {

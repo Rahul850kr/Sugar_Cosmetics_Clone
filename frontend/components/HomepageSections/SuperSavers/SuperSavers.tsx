@@ -9,7 +9,7 @@ const SuperSavers = () => {
   const { screenUi } = useContext(AppContext);
   return (
     <Box className={styles.mainContainer}>
-      <HeadingOfEachSection headingName="SUPER SAVERS" color="white" />
+      <HeadingOfEachSection headingName="SUPER SAVERS" color="white" fontSize="22px"  />
       <ProductSlider data={screenUi.superSavers} />
     </Box>
   );
