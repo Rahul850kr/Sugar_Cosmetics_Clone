@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import styles from "./Navbar.module.scss";
 import Link from "next/link";
 import { Box, Tooltip, TooltipProps, tooltipClasses } from "@mui/material";
@@ -9,8 +9,11 @@ import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import styled from "@emotion/styled";
 import MenubarDropdown from "../menubarDropdown/MenubarDropdown";
 import MenuIcon from "@mui/icons-material/Menu";
+import { AppContext } from "@/context/MyContextProvider";
+// import Cookies from 'js-cookie';
 
 const Navbar = () => {
+  const contextProvider = useContext(AppContext);
   const LightTooltip = styled(({ className, ...props }: TooltipProps) => (
     <Tooltip {...props} classes={{ popper: className }} />
   ))(({ theme }) => ({
@@ -22,6 +25,8 @@ const Navbar = () => {
       fontWeight: "bold",
     },
   }));
+
+  // console.log(contextProvider.userInfo.name);
 
   return (
     <Box width={"100%"}>
@@ -47,11 +52,15 @@ const Navbar = () => {
             Search
           </Box>
         </Box>
-        <Box className={styles.loginButton}>
-          <AccountCircleIcon />
-          <Link href={"/login"}>Login</Link>/
-          <Link href={"/signup"}>Register</Link>
-        </Box>
+        {contextProvider.isAuth ? (
+          <p style={{ color: "white" }}>{contextProvider.userInfo.name}</p>
+        ) : (
+          <Box className={styles.loginButton}>
+            <AccountCircleIcon />
+            <Link href={"/login"}>Login</Link>/
+            <Link href={"/signup"}>Register</Link>
+          </Box>
+        )}
         <Box className={styles.actionButtonsBox}>
           <LightTooltip title="Wishlist">
             <FavoriteBorderIcon className={styles.wishIcon} />

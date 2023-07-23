@@ -22,10 +22,11 @@ import SugarBeautyBlog from "@/components/HomepageSections/SugarBeautyBlog/Sugar
 import Explore from "@/components/HomepageSections/Expore/Explore";
 import ReadMore from "@/components/ReadMore/ReadMore";
 import Footer from "@/components/footer/Footer";
+import Cookies from "js-cookie";
 
 export default function Home() {
   const [pageLoader, setPageLoader] = useState(false);
-  const { handleGetHomeScreenUi } = useContext(AppContext);
+  const contextProvider = useContext(AppContext);
   const router = useRouter();
 
   const handleNavigateBottomBar = (newValue: any) => {
@@ -40,12 +41,20 @@ export default function Home() {
 
   const fetchScreenUi = async () => {
     setPageLoader(true);
-    await handleGetHomeScreenUi();
+    await contextProvider.handleGetHomeScreenUi();
     setPageLoader(false);
   };
 
   useEffect(() => {
     fetchScreenUi();
+    const token = Cookies.get("token");
+    // console.log(token);
+    if (token) {
+      contextProvider.handleSetIsAuth(true);
+      contextProvider.handleGetUserInfo(token);
+    } else {
+      contextProvider.handleSetIsAuth(false);
+    }
   }, []);
 
   return (

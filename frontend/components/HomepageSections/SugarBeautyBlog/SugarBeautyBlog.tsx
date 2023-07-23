@@ -22,9 +22,9 @@ const SugarBeautyBlog = () => {
       <HeadingOfEachSection headingName="SUGAR BEAUTY BLOG" color="black"  fontSize="22px" />
       <Box className={styles.sliderContainer}>
         <Slider autoplaySpeed={5000} autoplay={true} {...settings}>
-          {screenUi?.sugarBeautyBlog?.map((element: any) => {
+          {screenUi?.sugarBeautyBlog?.map((element: any,index:any) => {
             return (
-              <Box className={styles.eachImageBox} >
+              <Box key={index} className={styles.eachImageBox} >
                 <img src={element.imageUrl} alt="" />
               </Box>
             );

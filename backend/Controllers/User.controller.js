@@ -1,5 +1,6 @@
 const jwt = require("jsonwebtoken");
 const { UserModel } = require("../Models/User.model");
+const { authorisation } = require("../Middlewares/Authorization");
 require("dotenv").config();
 const bcrypt = require("bcrypt");
 
@@ -35,14 +36,14 @@ const Login = async (req, res) => {
   try {
     const { email, password } = await req.body;
     const registeredUser = await UserModel.findOne({ email });
-    // res.send(registeredUser);
+
     if (registeredUser) {
-      // const hashedpassword = await bcrypt.compare(password, oldUser.password)
       bcrypt.compare(password, registeredUser.password, function (err, result) {
         if (err) {
-          res
-            .status(400)
-            .json({ msg: "SOMETHING WENT WRONG PLEASE TRY AGAIN" });
+          res.status(400).json({
+            msg: "SOMETHING WENT WRONG PLEASE TRY AGAIN",
+            status: false,
+          });
         }
         if (result) {
           const token = jwt.sign(
@@ -50,7 +51,12 @@ const Login = async (req, res) => {
             process.env.SECRET
           );
 
-          res.json({ msg: "Login successful", status: true, token });
+          res.status(200).json({
+            msg: "Login successful",
+            status: true,
+            token,
+            user: { name: registeredUser.name, email: email },
+          });
         } else {
           res.status(400).json({ msg: "INCORRECT CREDENTIALS", status: false });
         }
@@ -59,11 +65,26 @@ const Login = async (req, res) => {
       res.status(400).json({ msg: "USER NOT REGISTERED", status: false });
     }
   } catch (err) {
-    res.status(400).json({ msg: "USER LOGIN FAILED", error: err });
+    res
+      .status(400)
+      .json({ msg: "USER LOGIN FAILED", error: err, status: false });
+  }
+};
+
+const userInfo = async (req, res) => {
+  try {
+    const user = await UserModel.findOne({ _id: req.body.userId });
+    res.status(200).json({
+      msg: "User Information",
+      userInfo: { name: user.name, email: user.email },
+    });
+  } catch (err) {
+    res.status(400).json({ msg: "SOMETHING WENT WRONG" });
   }
 };
 
 module.exports = {
   Signup,
   Login,
+  userInfo,
 };

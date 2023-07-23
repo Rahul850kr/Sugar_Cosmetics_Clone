@@ -22,8 +22,8 @@ const NewlyLaunched = () => {
       <HeadingOfEachSection headingName="NEWLY LAUNCHED" color="black" fontSize="22px"  />
       <Box className={styles.sliderContainer}>
         <Slider autoplaySpeed={5000} autoplay={true} {...settings}>
-          {screenUi?.newlyLaunched?.map((element: any) => {
-            return <img src={element.imageUrl} alt="" />;
+          {screenUi?.newlyLaunched?.map((element: any,index:any) => {
+            return <img key={index} src={element.imageUrl} alt="" />;
           })}
         </Slider>
       </Box>
