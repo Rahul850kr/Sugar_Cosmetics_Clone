@@ -1,14 +1,38 @@
 "use client";
 import { Box, Button, Checkbox, TextField } from "@mui/material";
-import React from "react";
+import React, { useContext, useState } from "react";
 import styles from "./signup.module.scss";
 import CloseIcon from "@mui/icons-material/Close";
 import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
+import { AppContext } from "@/context/MyContextProvider";
 
 const Signup = () => {
   const label = { inputProps: { "aria-label": "Checkbox demo" } };
+  const contextProvider = useContext(AppContext);
+
+  const [email, setEmail] = useState<string>("");
+  const [name, setName] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [crossFlags, setCrossFlags] = useState<any>({
+    nameCross: false,
+    emailCross: false,
+    passwordCross: false,
+  });
+  const [passwordVisible, setPasswordVisible] = useState<boolean>(false);
+  const [loader, setLoader] = useState<boolean>(false);
+
+  const handleSubmit = async () => {
+    let payload = {
+      name,
+      email,
+      password,
+    };
+
+    let res = await contextProvider.handleSignup(payload);
+    console.log(res);
+  };
 
   return (
     <Box className={styles.mainContainer}>
@@ -23,49 +47,128 @@ const Signup = () => {
         <Box className={styles.loginSignUpText}>Register Here</Box>
         <Box className={styles.inputFieldBox}>
           <TextField
+            onChange={(e) => {
+              setName(e.target.value);
+              if (e.target.value == "" || e.target.value == undefined) {
+                // setEmailCrossFlag(false);
+                setCrossFlags({ ...crossFlags, nameCross: false });
+              } else {
+                setCrossFlags({ ...crossFlags, nameCross: true });
+              }
+            }}
             type="text"
+            value={name}
             label="Full Name"
             id="outlined-start-adornment"
             sx={{ m: 1, width: "50ch" }}
             InputProps={{
               endAdornment: (
-                <Box className={styles.inputSuffix}>
-                  <CloseIcon fontSize="small" />
-                </Box>
+                <>
+                  {crossFlags.nameCross && (
+                    <Box
+                      className={styles.inputSuffix}
+                      onClick={() => {
+                        setEmail("");
+                        setCrossFlags({ ...crossFlags, nameCross: false });
+                      }}
+                    >
+                      <CloseIcon fontSize="small" />
+                    </Box>
+                  )}
+                </>
               ),
             }}
           />
         </Box>
         <Box className={styles.inputFieldBox}>
           <TextField
-            type="text"
+            onChange={(e) => {
+              setEmail(e.target.value);
+              if (e.target.value == "" || e.target.value == undefined) {
+                // setEmailCrossFlag(false);
+                setCrossFlags({ ...crossFlags, emailCross: false });
+              } else {
+                setCrossFlags({ ...crossFlags, emailCross: true });
+              }
+            }}
+            type="email"
+            value={email}
             label="Email"
             id="outlined-start-adornment"
             sx={{ m: 1, width: "50ch" }}
             InputProps={{
               endAdornment: (
-                <Box className={styles.inputSuffix}>
-                  <CloseIcon fontSize="small" />
-                </Box>
+                // <Box className={styles.inputSuffix}>
+                //   <CloseIcon fontSize="small" />
+                // </Box>
+                <>
+                  {crossFlags.emailCross && (
+                    <Box
+                      className={styles.inputSuffix}
+                      onClick={() => {
+                        setEmail("");
+                        setCrossFlags({ ...crossFlags, emailCross: false });
+                      }}
+                    >
+                      <CloseIcon fontSize="small" />
+                    </Box>
+                  )}
+                </>
               ),
             }}
           />
         </Box>
         <Box className={styles.inputFieldBox}>
           <TextField
-            type="password"
+            onChange={(e) => {
+              setPassword(e.target.value);
+              if (e.target.value == "" || e.target.value == undefined) {
+                setCrossFlags({ ...crossFlags, passwordCross: false });
+              } else {
+                setCrossFlags({ ...crossFlags, passwordCross: true });
+              }
+            }}
+            type={passwordVisible ? "text" : "password"}
             label="Password"
+            value={password}
             id="outlined-start-adornment"
             sx={{ m: 1, width: "50ch" }}
             InputProps={{
               endAdornment: (
-                <Box className={styles.inputSuffixBox}>
-                  <VisibilityIcon />
-                  <VisibilityOffIcon />
-                  <Box className={styles.inputSuffix}>
-                    <CloseIcon fontSize="small" />
+                <>
+                  <Box className={styles.inputSuffixBox}>
+                    {!passwordVisible ? (
+                      <VisibilityIcon
+                        sx={{ cursor: "pointer" }}
+                        onClick={() => {
+                          setPasswordVisible(true);
+                        }}
+                      />
+                    ) : (
+                      <VisibilityOffIcon
+                        sx={{ cursor: "pointer" }}
+                        onClick={() => {
+                          setPasswordVisible(false);
+                        }}
+                      />
+                    )}
+
+                    {crossFlags.passwordCross && (
+                      <Box className={styles.inputSuffix}>
+                        <CloseIcon
+                          fontSize="small"
+                          onClick={() => {
+                            setPassword("");
+                            setCrossFlags({
+                              ...crossFlags,
+                              passwordCross: false,
+                            });
+                          }}
+                        />
+                      </Box>
+                    )}
                   </Box>
-                </Box>
+                </>
               ),
             }}
           />
@@ -78,7 +181,11 @@ const Signup = () => {
         </Box>
 
         <Box className={styles.sendOtpButtonBox}>
-          <Button className={styles.sendOtpButton} variant="contained">
+          <Button
+            onClick={handleSubmit}
+            className={styles.sendOtpButton}
+            variant="contained"
+          >
             Register
           </Button>
         </Box>

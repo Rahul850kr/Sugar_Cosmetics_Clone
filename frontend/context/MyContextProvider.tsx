@@ -9,6 +9,7 @@ interface MyContextType {
   isAuth: boolean;
   handleSetIsAuth: (payload: boolean) => void;
   handleLogOut: () => void;
+  handleSignup: (payload: any) => void;
 }
 type childrenType = {
   children: ReactNode;
@@ -23,6 +24,7 @@ export const AppContext = createContext<MyContextType>({
   isAuth: false,
   handleSetIsAuth: () => {},
   handleLogOut: () => {},
+  handleSignup: () => {},
 });
 
 const MyContextProvider = ({ children }: childrenType) => {
@@ -66,6 +68,24 @@ const MyContextProvider = ({ children }: childrenType) => {
     }
   };
 
+  const handleSignup = async (payload: any): Promise<any> => {
+    try {
+      let res = await fetch("http://localhost:8080/signup", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
+      let data = await res.json();
+      console.log(data);
+      return data;
+    } catch (err) {
+      console.log("ERROR IN SIGNUP");
+      return { msg: "SIGNUP FAILED", status: false };
+    }
+  };
+
   const handleGetUserInfo = async (token: any) => {
     // const token = Cookies.get('token');
     try {
@@ -100,6 +120,7 @@ const MyContextProvider = ({ children }: childrenType) => {
         isAuth,
         handleSetIsAuth,
         handleLogOut,
+        handleSignup,
       }}
     >
       {children}
