@@ -9,7 +9,7 @@ interface MyContextType {
   isAuth: boolean;
   handleSetIsAuth: (payload: boolean) => void;
   handleLogOut: () => void;
-  handleSignup: (payload: any) => void;
+  handleSignup: (payload: any) => any;
 }
 type childrenType = {
   children: ReactNode;

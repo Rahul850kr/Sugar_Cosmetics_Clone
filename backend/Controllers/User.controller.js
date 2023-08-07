@@ -28,7 +28,9 @@ const Signup = async (req, res) => {
       });
     }
   } catch (err) {
-    res.status(400).json({ msg: "USER SIGNUP FAILED", error: err });
+    res
+      .status(400)
+      .json({ msg: "USER SIGNUP FAILED", error: err, status: false });
   }
 };
 

@@ -1,5 +1,13 @@
 "use client";
-import { Box, Button, Checkbox, TextField } from "@mui/material";
+import {
+  Alert,
+  Box,
+  Button,
+  Checkbox,
+  CircularProgress,
+  Snackbar,
+  TextField,
+} from "@mui/material";
 import React, { useContext, useState } from "react";
 import styles from "./signup.module.scss";
 import CloseIcon from "@mui/icons-material/Close";
@@ -7,11 +15,16 @@ import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import { AppContext } from "@/context/MyContextProvider";
+import { useRouter } from "next/navigation";
 
 const Signup = () => {
   const label = { inputProps: { "aria-label": "Checkbox demo" } };
   const contextProvider = useContext(AppContext);
-
+  const [snackbarOpen, setSnackbarOpen] = useState(false);
+  const [snackBarContent, setSnackBarContent] = useState<any>({
+    status: "",
+    text: "",
+  });
   const [email, setEmail] = useState<string>("");
   const [name, setName] = useState<string>("");
   const [password, setPassword] = useState<string>("");
@@ -23,7 +36,10 @@ const Signup = () => {
   const [passwordVisible, setPasswordVisible] = useState<boolean>(false);
   const [loader, setLoader] = useState<boolean>(false);
 
+  const router = useRouter();
+
   const handleSubmit = async () => {
+    setLoader(true);
     let payload = {
       name,
       email,
@@ -31,7 +47,57 @@ const Signup = () => {
     };
 
     let res = await contextProvider.handleSignup(payload);
-    console.log(res);
+
+    // console.log(res);
+    if (res.status) {
+      setSnackBarContent({
+        status: "success",
+        text: "Signup Succesfull",
+      });
+      setSnackbarOpen(true);
+      await new Promise((resolve) => {
+        setTimeout(() => {
+          setSnackbarOpen(false);
+          resolve("");
+        }, 2000);
+      });
+
+      router.push("/login");
+    } else {
+      if (res.msg == "USER ALREADY REGISTERED") {
+        setSnackBarContent({
+          status: "warning",
+          text: "User is already registered. Please Login!",
+        });
+        setSnackbarOpen(true);
+        await new Promise((resolve) => {
+          setTimeout(() => {
+            setSnackbarOpen(false);
+            resolve("");
+          }, 4000);
+        });
+        router.push("/login");
+      } else {
+        setSnackBarContent({
+          status: "error",
+          text: "SSomething Went Wrong Please Try Again!",
+        });
+        setSnackbarOpen(true);
+        await new Promise((resolve) => {
+          setTimeout(() => {
+            setSnackbarOpen(false);
+            resolve("");
+          }, 4000);
+        });
+        // router.push("/login");
+      }
+    }
+
+    setLoader(false);
+  };
+
+  const handleCloseSnackBar = () => {
+    setSnackbarOpen(false);
   };
 
   return (
@@ -85,7 +151,7 @@ const Signup = () => {
             onChange={(e) => {
               setEmail(e.target.value);
               if (e.target.value == "" || e.target.value == undefined) {
-                // setEmailCrossFlag(false);
+              
                 setCrossFlags({ ...crossFlags, emailCross: false });
               } else {
                 setCrossFlags({ ...crossFlags, emailCross: true });
@@ -98,9 +164,6 @@ const Signup = () => {
             sx={{ m: 1, width: "50ch" }}
             InputProps={{
               endAdornment: (
-                // <Box className={styles.inputSuffix}>
-                //   <CloseIcon fontSize="small" />
-                // </Box>
                 <>
                   {crossFlags.emailCross && (
                     <Box
@@ -181,13 +244,17 @@ const Signup = () => {
         </Box>
 
         <Box className={styles.sendOtpButtonBox}>
-          <Button
-            onClick={handleSubmit}
-            className={styles.sendOtpButton}
-            variant="contained"
-          >
-            Register
-          </Button>
+          {loader ? (
+            <CircularProgress color="secondary" />
+          ) : (
+            <Button
+              onClick={handleSubmit}
+              className={styles.sendOtpButton}
+              variant="contained"
+            >
+              Register
+            </Button>
+          )}
         </Box>
         <Box className={styles.whatsapptextBox}>
           <Checkbox
@@ -214,6 +281,20 @@ const Signup = () => {
           <span> Terms and Conditions</span>
         </Box>
       </Box>
+      <Snackbar
+        open={snackbarOpen}
+        autoHideDuration={6000}
+        onClose={handleCloseSnackBar}
+      >
+        <Alert
+          onClose={handleCloseSnackBar}
+          variant="filled"
+          severity={snackBarContent.status}
+          sx={{ width: "100%" }}
+        >
+          {snackBarContent.text}
+        </Alert>
+      </Snackbar>
     </Box>
   );
 };

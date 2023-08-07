@@ -39,7 +39,7 @@ const Login = () => {
       email: email,
       password: password,
     });
-    setLoader(false);
+
     if (typeof res == "object") {
       if (!res["status"]) {
         if (res["msg"] == "USER NOT REGISTERED") {
@@ -93,6 +93,7 @@ const Login = () => {
         router.push("/");
       }
     }
+    setLoader(false);
   };
 
   const handleCloseSnackBar = () => {
