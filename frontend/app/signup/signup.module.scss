@@ -2,6 +2,9 @@
   height: 100vh;
   width: 100%;
   display: flex;
+  @media (max-width: 1000px) {
+    flex-direction: column;
+  }
   .leftSection {
     height: 100%;
     width: 38%;
@@ -9,6 +12,10 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+    @media (max-width: 1000px) {
+      width: 100%;
+      height: 50%;
+    }
   }
   .rightSection {
     overflow-y: auto;
@@ -20,6 +27,10 @@
     background-position: center;
     padding: 0 2rem;
     box-sizing: border-box;
+    @media (max-width: 1000px) {
+      width: 100%;
+      height: 50%;
+    }
     .backArrowBox {
       width: 100%;
       height: 5rem;
@@ -86,9 +97,11 @@
 
     .sendOtpButtonBox {
       width: 100%;
-      height: 12rem;
+      height: 10rem;
       display: flex;
+      flex-direction: column;
       justify-content: center;
+      gap: 1rem;
       align-items: center;
       border-bottom: 1px dashed rgb(174, 174, 174);
       .sendOtpButton {
@@ -158,10 +171,92 @@
   }
 }
 
+.rightSectionContent {
+  @media (max-width: 1000px) {
+    display: none;
+  }
+}
+
 .inputSuffixBox {
   margin-left: 1rem;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 5px;
+}
+
+.orSectionBox {
+  // position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  hr {
+    width: 3%;
+    opacity: 1;
+    border: 0;
+    border-top: 2px solid #fc2779;
+    color: #fc2779;
+    background-color: #fc2779;
+  }
+}
+.loginName {
+  cursor: pointer;
+  color: #fc2779;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.mobileViewCard {
+  display: none;
+  position: absolute;
+  padding-top: 3rem;
+  box-sizing: border-box;
+  left: 0;
+  bottom: 10%;
+  right: 0;
+  margin: auto;
+  height: 60%;
+  width: 90%;
+  // border: 1px solid red;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  @media (max-width: 1000px) {
+    display: block;
+  }
+
+  .sendOtpButtonBox {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0.5rem;
+    // border: 1px solid red;
+  }
+  .sendOtpButton {
+    background-color: black !important;
+    color: white !important;
+    font-weight: bold !important;
+    font-size: 16px !important;
+    cursor: pointer !important;
+  }
+  .inputFieldBox {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .inputSuffix {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: black;
+      color: white;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+  }
 }

@@ -16,6 +16,7 @@ import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import { AppContext } from "@/context/MyContextProvider";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 const Login = () => {
   const label = { inputProps: { "aria-label": "Checkbox demo" } };
@@ -31,6 +32,7 @@ const Login = () => {
   const [passwordVisible, setPasswordVisible] = useState(false);
   const contextProvider = useContext(AppContext);
   const [loader, setLoader] = useState(false);
+  const [buttonDisable, setButtonDisable] = useState<boolean>(true);
   const router = useRouter();
 
   const handleSubmit = async () => {
@@ -116,9 +118,6 @@ const Login = () => {
           {snackBarContent.text}
         </Alert>
       </Snackbar>
-      {/* <Alert className={styles.alert} variant="filled" severity="error">
-        This is an error alert — check it out!
-      </Alert> */}
       <Box className={styles.mobileViewCard}>
         <Box className={styles.inputFieldBox}>
           <TextField
@@ -216,21 +215,34 @@ const Login = () => {
               onClick={handleSubmit}
               className={styles.sendOtpButton}
               variant="contained"
+              style={buttonDisable ? { opacity: 0.6 } : { opacity: 1 }}
             >
               Login
             </Button>
           )}
+          <Box className={styles.orSectionBox}>
+            <hr />
+            <p>Or</p>
+            <hr />
+          </Box>
+          <Link href="/signup">
+            <Box className={styles.loginName}>Register</Box>
+          </Link>
         </Box>
       </Box>
       <Box className={styles.leftSection}>
         <Box className={styles.backArrowBox}>
-          <KeyboardBackspaceIcon className={styles.backArrow} />
+          <Link href="/">
+            <KeyboardBackspaceIcon className={styles.backArrow} />
+          </Link>
         </Box>
       </Box>
       <Box className={styles.rightSection}>
         <Box className={styles.rightSectionContent}>
           <Box className={styles.backArrowBox}>
-            <KeyboardBackspaceIcon className={styles.backArrow} />
+            <Link href="/">
+              <KeyboardBackspaceIcon className={styles.backArrow} />
+            </Link>
           </Box>
           <Box className={styles.hiImageBox}>
             <img
@@ -342,6 +354,14 @@ const Login = () => {
                 Login
               </Button>
             )}
+            <Box className={styles.orSectionBox}>
+              <hr />
+              <p>Or</p>
+              <hr />
+            </Box>
+            <Link href="/signup">
+              <Box className={styles.loginName}>Register</Box>
+            </Link>
           </Box>
           <Box className={styles.whatsapptextBox}>
             <Checkbox
