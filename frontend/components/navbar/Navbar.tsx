@@ -22,9 +22,11 @@ import MenubarDropdown from "../menubarDropdown/MenubarDropdown";
 import MenuIcon from "@mui/icons-material/Menu";
 import { AppContext } from "@/context/MyContextProvider";
 import { Logout } from "@mui/icons-material";
+import { useRouter } from "next/navigation";
 
 const Navbar = () => {
   const contextProvider = useContext(AppContext);
+  const router = useRouter();
   const LightTooltip = styled(({ className, ...props }: TooltipProps) => (
     <Tooltip {...props} classes={{ popper: className }} />
   ))(({ theme }) => ({
@@ -105,12 +107,28 @@ const Navbar = () => {
           </Box>
         )}
         <Box className={styles.actionButtonsBox}>
-          <LightTooltip title="Wishlist">
-            <FavoriteBorderIcon className={styles.wishIcon} />
-          </LightTooltip>
-          <LightTooltip title="Cart">
-            <AddShoppingCartIcon className={styles.wishIcon} />
-          </LightTooltip>
+          <Box
+            className={styles.wishlistBox}
+            onClick={() => {
+              router.push("/wishlist");
+            }}
+          >
+            <LightTooltip title="Wishlist">
+              <FavoriteBorderIcon className={styles.wishIcon} />
+            </LightTooltip>
+            <Box className={styles.wishlistCount}>
+              {contextProvider.wishlists.length}
+            </Box>
+          </Box>
+          <Box className={styles.wishlistBox}>
+            <LightTooltip title="Cart">
+              <AddShoppingCartIcon className={styles.wishIcon} />
+            </LightTooltip>
+            <Box className={styles.wishlistCount}>
+              {" "}
+              {contextProvider.cartData.length}
+            </Box>
+          </Box>
         </Box>
       </nav>
       <Menu

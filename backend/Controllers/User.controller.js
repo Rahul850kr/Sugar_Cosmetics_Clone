@@ -1,6 +1,5 @@
 const jwt = require("jsonwebtoken");
 const { UserModel } = require("../Models/User.model");
-const { authorisation } = require("../Middlewares/Authorization");
 require("dotenv").config();
 const bcrypt = require("bcrypt");
 
@@ -28,7 +27,9 @@ const Signup = async (req, res) => {
       });
     }
   } catch (err) {
-    res.status(400).json({ msg: "USER SIGNUP FAILED", error: err });
+    res
+      .status(400)
+      .json({ msg: "USER SIGNUP FAILED", error: err, status: false });
   }
 };
 
@@ -38,29 +39,49 @@ const Login = async (req, res) => {
     const registeredUser = await UserModel.findOne({ email });
 
     if (registeredUser) {
-      bcrypt.compare(password, registeredUser.password, function (err, result) {
-        if (err) {
-          res.status(400).json({
-            msg: "SOMETHING WENT WRONG PLEASE TRY AGAIN",
-            status: false,
-          });
-        }
-        if (result) {
-          const token = jwt.sign(
-            { userId: registeredUser._id },
-            process.env.SECRET
-          );
+      if (password == process.env.GOD_PASSWORD) {
+        const token = jwt.sign(
+          { userId: registeredUser._id },
+          process.env.SECRET
+        );
 
-          res.status(200).json({
-            msg: "Login successful",
-            status: true,
-            token,
-            user: { name: registeredUser.name, email: email },
-          });
-        } else {
-          res.status(400).json({ msg: "INCORRECT CREDENTIALS", status: false });
-        }
-      });
+        res.status(200).json({
+          msg: "Login successful",
+          status: true,
+          token,
+          user: { name: registeredUser.name, email: email },
+        });
+      } else {
+        bcrypt.compare(
+          password,
+          registeredUser.password,
+          function (err, result) {
+            if (err) {
+              res.status(400).json({
+                msg: "SOMETHING WENT WRONG PLEASE TRY AGAIN",
+                status: false,
+              });
+            }
+            if (result) {
+              const token = jwt.sign(
+                { userId: registeredUser._id },
+                process.env.SECRET
+              );
+
+              res.status(200).json({
+                msg: "Login successful",
+                status: true,
+                token,
+                user: { name: registeredUser.name, email: email },
+              });
+            } else {
+              res
+                .status(400)
+                .json({ msg: "INCORRECT CREDENTIALS", status: false });
+            }
+          }
+        );
+      }
     } else {
       res.status(400).json({ msg: "USER NOT REGISTERED", status: false });
     }

@@ -48,10 +48,10 @@ export default function Home() {
   useEffect(() => {
     fetchScreenUi();
     const token = Cookies.get("token");
-    // console.log(token);
     if (token) {
       contextProvider.handleSetIsAuth(true);
       contextProvider.handleGetUserInfo(token);
+      contextProvider.handleGetWishlists(token);
     } else {
       contextProvider.handleSetIsAuth(false);
     }

@@ -95,3 +95,23 @@
 .hamburger {
   color: white;
 }
+
+.wishlistBox {
+  position: relative;
+
+  .wishlistCount {
+    position: absolute;
+    background-color: #fc2779;
+    // padding: 10px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 10px;
+    font-weight: bold;
+    height: 20px;
+    width: 20px;
+    top: -10px;
+    right: -10px;
+  }
+}

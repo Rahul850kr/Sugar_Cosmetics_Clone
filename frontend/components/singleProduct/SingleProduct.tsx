@@ -1,11 +1,24 @@
-import React from "react";
+import React, { useContext } from "react";
 import styles from "./singleProduct.module.scss";
 import { Box } from "@mui/material";
 import PaletteIcon from "@mui/icons-material/Palette";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
+import { AppContext } from "@/context/MyContextProvider";
+import Cookies from "js-cookie";
 
 const SingleProduct = ({ element }: any) => {
+  const contextProvider = useContext(AppContext);
+
+  const handleClickWishlist = async () => {
+    try {
+      const token = Cookies.get("token");
+      await contextProvider.handleAddWishlist(element, token);
+      await contextProvider.handleGetWishlists(token);
+    } catch (err) {
+      console.log("Something Went Wrong");
+    }
+  };
   return (
     <Box className={styles.cardContainer}>
       <Box className={styles.imageBox}>
@@ -32,14 +45,14 @@ const SingleProduct = ({ element }: any) => {
         </Box>
       </Box>
       <Box className={styles.addCartWishlistBox}>
-        <Box className={styles.wishlistBox}>
+        <Box className={styles.wishlistBox} onClick={handleClickWishlist}>
           <FavoriteBorderIcon
             fontSize="small"
             className={styles.favouriteIcon}
           />
         </Box>
         <Box className={styles.buttonBox}>
-          <p className={styles.buttonText} >{element.buttonText}</p>
+          <p className={styles.buttonText}>{element.buttonText}</p>
         </Box>
       </Box>
     </Box>
