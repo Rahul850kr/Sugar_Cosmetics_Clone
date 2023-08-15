@@ -105,9 +105,12 @@ const Navbar = () => {
           </Box>
         )}
         <Box className={styles.actionButtonsBox}>
-          <LightTooltip title="Wishlist">
-            <FavoriteBorderIcon className={styles.wishIcon} />
-          </LightTooltip>
+          <Box className={styles.wishlistBox}>
+            <LightTooltip title="Wishlist">
+              <FavoriteBorderIcon className={styles.wishIcon} />
+            </LightTooltip>
+            <Box className={styles.wishlistCount}>15</Box>
+          </Box>
           <LightTooltip title="Cart">
             <AddShoppingCartIcon className={styles.wishIcon} />
           </LightTooltip>

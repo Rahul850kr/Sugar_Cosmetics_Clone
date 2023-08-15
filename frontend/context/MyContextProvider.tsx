@@ -10,6 +10,7 @@ interface MyContextType {
   handleSetIsAuth: (payload: boolean) => void;
   handleLogOut: () => void;
   handleSignup: (payload: any) => any;
+  handleAddWishlist: (payload: any, token: any) => any;
 }
 type childrenType = {
   children: ReactNode;
@@ -25,6 +26,7 @@ export const AppContext = createContext<MyContextType>({
   handleSetIsAuth: () => {},
   handleLogOut: () => {},
   handleSignup: () => {},
+  handleAddWishlist: () => {},
 });
 
 const MyContextProvider = ({ children }: childrenType) => {
@@ -51,17 +53,12 @@ const MyContextProvider = ({ children }: childrenType) => {
         },
         body: JSON.stringify(payload),
       });
-
       let data = await res.json();
       if (data.token) {
-        console.log(data);
         document.cookie = `token=${data.token}; max-age=3600; path=/;`;
         setUserInfo(data.user);
-        // return data;
       }
-
       return data;
-      // console.log(data);
     } catch (err) {
       console.log(err);
       return { msg: "LOGIN FAILED IN CATCH" };
@@ -87,7 +84,6 @@ const MyContextProvider = ({ children }: childrenType) => {
   };
 
   const handleGetUserInfo = async (token: any) => {
-    // const token = Cookies.get('token');
     try {
       let res = await fetch("http://localhost:8080/userInfo", {
         method: "GET",
@@ -96,7 +92,6 @@ const MyContextProvider = ({ children }: childrenType) => {
         },
       });
       let data = await res.json();
-      console.log(data);
       setUserInfo(data.userInfo);
     } catch (err) {
       console.log("ERROR IN GETTING USERINFO");
@@ -107,6 +102,23 @@ const MyContextProvider = ({ children }: childrenType) => {
     document.cookie = `token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
     setUserInfo({});
     setIsAuth(false);
+  };
+
+  const handleAddWishlist = async (payload: any, token: any) => {
+    try {
+      let res = await fetch("http://localhost:8080/addWishlist", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
+      let data = await res.json();
+      console.log(data);
+    } catch (err) {
+      console.log("FAILED TO ADD TO WISHLIST");
+    }
   };
 
   return (
@@ -121,6 +133,7 @@ const MyContextProvider = ({ children }: childrenType) => {
         handleSetIsAuth,
         handleLogOut,
         handleSignup,
+        handleAddWishlist,
       }}
     >
       {children}
