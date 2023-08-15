@@ -8,7 +8,7 @@ import {
   Snackbar,
   TextField,
 } from "@mui/material";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import styles from "./login.module.scss";
 import CloseIcon from "@mui/icons-material/Close";
 import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
@@ -17,6 +17,7 @@ import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import { AppContext } from "@/context/MyContextProvider";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import Cookies from "js-cookie";
 
 const Login = () => {
   const label = { inputProps: { "aria-label": "Checkbox demo" } };
@@ -92,6 +93,10 @@ const Login = () => {
           }, 2000);
         });
         contextProvider.handleSetIsAuth(true);
+        let res = await contextProvider.handleGetWishlists(
+          Cookies.get("token")
+        );
+        // console.log(res);
         router.push("/");
       }
     }

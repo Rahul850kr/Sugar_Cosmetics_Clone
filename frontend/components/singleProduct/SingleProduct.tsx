@@ -9,6 +9,16 @@ import Cookies from "js-cookie";
 
 const SingleProduct = ({ element }: any) => {
   const contextProvider = useContext(AppContext);
+
+  const handleClickWishlist = async () => {
+    try {
+      const token = Cookies.get("token");
+      await contextProvider.handleAddWishlist(element, token);
+      await contextProvider.handleGetWishlists(token);
+    } catch (err) {
+      console.log("Something Went Wrong");
+    }
+  };
   return (
     <Box className={styles.cardContainer}>
       <Box className={styles.imageBox}>
@@ -35,13 +45,7 @@ const SingleProduct = ({ element }: any) => {
         </Box>
       </Box>
       <Box className={styles.addCartWishlistBox}>
-        <Box
-          className={styles.wishlistBox}
-          onClick={() => {
-            const token = Cookies.get("token");
-            contextProvider.handleAddWishlist(element, token);
-          }}
-        >
+        <Box className={styles.wishlistBox} onClick={handleClickWishlist}>
           <FavoriteBorderIcon
             fontSize="small"
             className={styles.favouriteIcon}

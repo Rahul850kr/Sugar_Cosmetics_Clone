@@ -11,6 +11,7 @@ const wishlistSchema = mongoose.Schema({
   strikedPrice: Number,
   price: Number,
   discoount: Number,
+  buttonText: String,
   userId: String,
 });
 

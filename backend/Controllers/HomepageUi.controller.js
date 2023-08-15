@@ -14,7 +14,6 @@ const {
   sugarBeautyBlogModel,
   exploreModel,
 } = require("../Models/HomepageData.model");
-const { HomePageUiModel } = require("../Models/HomepageUi.model");
 
 const HomepageController = async (req, res) => {
   try {
@@ -32,8 +31,6 @@ const HomepageController = async (req, res) => {
     const skinCareBasics = await skinCareBasicsModel.find();
     const sugarBeautyBlog = await sugarBeautyBlogModel.find();
     const explore = await exploreModel.find();
-
-    // const homepageUi = await HomePageUiModel.findOne();
 
     res.status(200).json({
       homepageUi: {

@@ -3,7 +3,7 @@ const { WishlistModel } = require("../Models/Wishlist.model");
 const getWishlistData = async (req, res) => {
   try {
     const { userId } = await req.body;
-    const wishlists = await WishlistModel.find({ _id: userId });
+    const wishlists = await WishlistModel.find({ userId });
     res.status(200).json({ wishlists });
   } catch (err) {
     res.status(400).json({ msg: "Something went wrong", error: err });

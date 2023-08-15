@@ -11,6 +11,11 @@ interface MyContextType {
   handleLogOut: () => void;
   handleSignup: (payload: any) => any;
   handleAddWishlist: (payload: any, token: any) => any;
+  wishlists: any;
+  handleSetWishlists: (payload: any) => any;
+  handleGetWishlists: (payload: any) => any;
+  cartData: any;
+  setCartData: (data: any) => any;
 }
 type childrenType = {
   children: ReactNode;
@@ -27,12 +32,19 @@ export const AppContext = createContext<MyContextType>({
   handleLogOut: () => {},
   handleSignup: () => {},
   handleAddWishlist: () => {},
+  wishlists: [],
+  handleSetWishlists: () => {},
+  handleGetWishlists: () => {},
+  cartData: [],
+  setCartData: () => {},
 });
 
 const MyContextProvider = ({ children }: childrenType) => {
   const [screenUi, setScreenUi] = useState<Object>({});
   const [userInfo, setUserInfo] = useState<Object>({});
   const [isAuth, setIsAuth] = useState<boolean>(false);
+  const [wishlists, setWishlists] = useState<any>([]);
+  const [cartData, setCartData] = useState<any>([]);
 
   const handleGetHomeScreenUi = async () => {
     let res = await fetch("http://localhost:8080/screenUi");
@@ -42,6 +54,10 @@ const MyContextProvider = ({ children }: childrenType) => {
 
   const handleSetIsAuth = (val: boolean) => {
     setIsAuth(val);
+  };
+
+  const handleSetWishlists = (val: any) => {
+    setWishlists(val);
   };
 
   const handleLogin = async (payload: any): Promise<object> => {
@@ -55,7 +71,7 @@ const MyContextProvider = ({ children }: childrenType) => {
       });
       let data = await res.json();
       if (data.token) {
-        document.cookie = `token=${data.token}; max-age=3600; path=/;`;
+        document.cookie = `token=${data.token}; max-age=86400; path=/;`;
         setUserInfo(data.user);
       }
       return data;
@@ -115,9 +131,47 @@ const MyContextProvider = ({ children }: childrenType) => {
         body: JSON.stringify(payload),
       });
       let data = await res.json();
-      console.log(data);
+      // console.log(res.status);
+      if (res.status == 400) {
+        if (data.msg == "NOT AUTHORISED PLEASE LOGIN") {
+          return "NOT AUTHORISED PLEASE LOGIN";
+        } else if (data.msg == "Item Already In The Wishlist") {
+          return "Item Already In The Wishlist";
+        } else if (data.msg == "Something went wrong") {
+          return "Something went wrong";
+        }
+      } else {
+        return "success";
+      }
     } catch (err) {
       console.log("FAILED TO ADD TO WISHLIST");
+      return "FAILED TO ADD TO WISHLIST";
+    }
+  };
+
+  const handleGetWishlists = async (token: any) => {
+    try {
+      let res = await fetch("http://localhost:8080/getWishlists", {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "content-type": "application/json",
+        },
+      });
+      let data = await res.json();
+      if (res.status == 400) {
+        if (data.msg == "NOT AUTHORISED PLEASE LOGIN") {
+          return "NOT AUTHORISED PLEASE LOGIN";
+        } else if (data.msg == "Something went wrong") {
+          return "Something went wrong";
+        }
+      } else {
+        handleSetWishlists(data.wishlists);
+        return "success";
+      }
+    } catch (err) {
+      console.log("FAILED TO ADD TO WISHLIST");
+      return "FAILED TO ADD TO WISHLIST";
     }
   };
 
@@ -134,6 +188,11 @@ const MyContextProvider = ({ children }: childrenType) => {
         handleLogOut,
         handleSignup,
         handleAddWishlist,
+        wishlists,
+        handleSetWishlists,
+        handleGetWishlists,
+        cartData,
+        setCartData,
       }}
     >
       {children}

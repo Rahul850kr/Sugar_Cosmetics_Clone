@@ -13,7 +13,7 @@ AllRoutes.get("/screenUi", HomepageController);
 AllRoutes.post("/signup", Signup);
 AllRoutes.post("/login", Login);
 AllRoutes.get("/userInfo", authorisation, userInfo);
-AllRoutes.get("/getWishlist", authorisation, getWishlistData);
+AllRoutes.get("/getWishlists", authorisation, getWishlistData);
 AllRoutes.post("/addWishlist", authorisation, addWishlist);
 
 module.exports = {
