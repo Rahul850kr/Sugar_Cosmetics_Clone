@@ -5,6 +5,7 @@ const { authorisation } = require("../Middlewares/Authorization");
 const {
   getWishlistData,
   addWishlist,
+  handleRemoveWishlist,
 } = require("../Controllers/Wishlist.controller");
 
 const AllRoutes = Router();
@@ -15,6 +16,7 @@ AllRoutes.post("/login", Login);
 AllRoutes.get("/userInfo", authorisation, userInfo);
 AllRoutes.get("/getWishlists", authorisation, getWishlistData);
 AllRoutes.post("/addWishlist", authorisation, addWishlist);
+AllRoutes.post("/removeWishlist/:id", authorisation, handleRemoveWishlist);
 
 module.exports = {
   AllRoutes,

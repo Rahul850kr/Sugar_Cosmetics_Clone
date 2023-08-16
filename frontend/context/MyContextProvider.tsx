@@ -16,6 +16,12 @@ interface MyContextType {
   handleGetWishlists: (payload: any) => any;
   cartData: any;
   setCartData: (data: any) => any;
+  snackbarOpen: any;
+  setSnackbarOpen: (payload: any) => any;
+  snackBarContent: any;
+  setSnackBarContent: (payload: any) => any;
+  handleCloseSnackBar: (payload: any) => any;
+  handleRemoveWishlist: (id: any, token: any) => any;
 }
 type childrenType = {
   children: ReactNode;
@@ -37,6 +43,12 @@ export const AppContext = createContext<MyContextType>({
   handleGetWishlists: () => {},
   cartData: [],
   setCartData: () => {},
+  snackbarOpen: false,
+  setSnackbarOpen: () => {},
+  snackBarContent: {},
+  setSnackBarContent: () => {},
+  handleCloseSnackBar: () => {},
+  handleRemoveWishlist: () => {},
 });
 
 const MyContextProvider = ({ children }: childrenType) => {
@@ -45,6 +57,15 @@ const MyContextProvider = ({ children }: childrenType) => {
   const [isAuth, setIsAuth] = useState<boolean>(false);
   const [wishlists, setWishlists] = useState<any>([]);
   const [cartData, setCartData] = useState<any>([]);
+  const [snackbarOpen, setSnackbarOpen] = useState(false);
+  const [snackBarContent, setSnackBarContent] = useState<any>({
+    status: "success",
+    text: "",
+  });
+
+  const handleCloseSnackBar = () => {
+    setSnackbarOpen(false);
+  };
 
   const handleGetHomeScreenUi = async () => {
     let res = await fetch("http://localhost:8080/screenUi");
@@ -134,18 +155,53 @@ const MyContextProvider = ({ children }: childrenType) => {
       // console.log(res.status);
       if (res.status == 400) {
         if (data.msg == "NOT AUTHORISED PLEASE LOGIN") {
+          setSnackBarContent({
+            status: "error",
+            text: "You are not authorized please login first!",
+          });
+          setSnackbarOpen(true);
           return "NOT AUTHORISED PLEASE LOGIN";
         } else if (data.msg == "Item Already In The Wishlist") {
+          setSnackBarContent({
+            status: "success",
+            text: "Item removed from wishlist",
+          });
+          setSnackbarOpen(true);
           return "Item Already In The Wishlist";
         } else if (data.msg == "Something went wrong") {
+          setSnackBarContent({
+            status: "error",
+            text: "Something Went Wrong!",
+          });
+          setSnackbarOpen(true);
           return "Something went wrong";
         }
       } else {
+        setSnackBarContent({
+          status: "success",
+          text: "Item added to wishlist",
+        });
+        setSnackbarOpen(true);
         return "success";
       }
     } catch (err) {
       console.log("FAILED TO ADD TO WISHLIST");
       return "FAILED TO ADD TO WISHLIST";
+    }
+  };
+
+  const handleRemoveWishlist = async (id: any, token: any) => {
+    try {
+      let res = await fetch(`http://localhost:8080/removeWishlist/${id}`, {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      let data = await res.json();
+      console.log("data is ", data);
+    } catch (err) {
+      console.log("FAILED TO REMOVE ITEM FROM WISHLIST");
     }
   };
 
@@ -193,6 +249,12 @@ const MyContextProvider = ({ children }: childrenType) => {
         handleGetWishlists,
         cartData,
         setCartData,
+        snackbarOpen,
+        setSnackbarOpen,
+        snackBarContent,
+        setSnackBarContent,
+        handleCloseSnackBar,
+        handleRemoveWishlist,
       }}
     >
       {children}
