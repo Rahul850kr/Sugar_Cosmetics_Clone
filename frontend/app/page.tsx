@@ -2,7 +2,7 @@
 import Navbar from "@/components/navbar/Navbar";
 import styles from "./page.module.scss";
 import Carousel from "@/components/carousel/Carousel";
-import { Box, CircularProgress } from "@mui/material";
+import { Alert, Box, CircularProgress, Snackbar } from "@mui/material";
 import BottomBar from "@/components/bottom-bar/BottomBar";
 import { useRouter } from "next/navigation";
 import { useContext, useEffect, useState } from "react";
@@ -26,6 +26,7 @@ import Cookies from "js-cookie";
 
 export default function Home() {
   const [pageLoader, setPageLoader] = useState(false);
+
   const contextProvider = useContext(AppContext);
   const router = useRouter();
 
@@ -86,6 +87,21 @@ export default function Home() {
           <BottomBar handleNavigateBottomBar={handleNavigateBottomBar} />
         </Box>
       )}
+
+      <Snackbar
+        open={contextProvider.snackbarOpen}
+        autoHideDuration={6000}
+        onClose={contextProvider.handleCloseSnackBar}
+      >
+        <Alert
+          onClose={contextProvider.handleCloseSnackBar}
+          variant="filled"
+          severity={contextProvider.snackBarContent.status}
+          sx={{ width: "100%" }}
+        >
+          {contextProvider.snackBarContent.text}
+        </Alert>
+      </Snackbar>
     </Box>
   );
 }

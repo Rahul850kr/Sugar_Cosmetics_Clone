@@ -29,7 +29,19 @@ const addWishlist = async (req, res) => {
   }
 };
 
+const handleRemoveWishlist = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { userId } = req.body;
+    await WishlistModel.deleteOne({ _id: id, userId: userId });
+    res.status(200).json({ msg: "Item reomoved from wishlist" });
+  } catch (err) {
+    res.status(400).json({ msg: "Something went wrong", error: err });
+  }
+};
+
 module.exports = {
   getWishlistData,
   addWishlist,
+  handleRemoveWishlist,
 };
